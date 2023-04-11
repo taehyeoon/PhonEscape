@@ -75,3 +75,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
+
+# Custom Add
+# The vsconfig file in a Unity project contains editor settings for Visual Studio, 
+# such as the Unity-specific scripts to include in IntelliSense, 
+# and it's not necessary to include it in Git because it's a user-specific file 
+# that can change frequently and shouldn't affect the project's functionality or structure.
+.vsconfig
+
+
+
