@@ -1,103 +1,62 @@
-//#define UNITY_EDITOR
-#define ANDROID
-
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum EPlayerSprite
-{
-    player_idle_up,
-    player_idle_down,
-    player_idle_side,
-    //walk_up_1,
-    //walk_up_2,
-    //walk_up_3,
-    //walk_down_1,
-    //walk_down_2,
-    //walk_down_3,
-    //walk_side_1,
-    //walk_side_2,
-    //walk_side_3,
-}
 
 public class Player : MonoBehaviour
 {
+    [Header("Component")]
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private Vector2 prevInput;
-    [SerializeField] private float speed;
+    private Animator anim;
     [SerializeField] private FloatingJoystick joystick;
-    [SerializeField][Tooltip("The player moves when the stick is further than this value from the center")]
-    [Range(0, 1)] private float joystickRangeMin;
 
-    Dictionary<EPlayerSprite, Sprite> spriteNames;
+    [Header("Player Data")]
+    [SerializeField] private float speed;
+    [SerializeField][Range(0, 1)] private float joystickRangeMin; // The player moves when the stick is further than this value from the center
+
+    [Header("Input")]
+    private Vector2 prevInput;
+
+    [Header("Animator parameter")]
+    private string anim_para_up;
+    private string anim_para_down;
+    private string anim_para_right;
+    private string anim_para_left;
+    private string anim_para_stop;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        initSprites();
+        anim = GetComponent<Animator>();
+        anim_para_up = "up";
+        anim_para_down = "down";
+        anim_para_right = "right";
+        anim_para_left = "left";
+        anim_para_stop = "stop";
     }
 
 
     private void FixedUpdate()
     {
         Vector2 curInput = GetInputDir();
-        if(curInput != Vector2.zero)
+
+        if (!Vector2.Equals(curInput, prevInput))
         {
-            Move(curInput);
             ChangeSprite(curInput);
         }
-    }
+        Move(curInput);
 
-
-    private void initSprites()
-    {
-        spriteNames = new Dictionary<EPlayerSprite, Sprite>();
-
-        foreach (EPlayerSprite spriteVal in Enum.GetValues(typeof(EPlayerSprite)))
-        {
-            string spriteAddress = $"Player/{spriteVal}";
-            if (Resources.Load<Sprite>(spriteAddress) != null)
-                spriteNames.Add(spriteVal, Resources.Load<Sprite>(spriteAddress));
-            else
-                Debug.LogWarning($"Resources folder does not contain {spriteAddress}");
-        }
-    }
-
-
-    private void ChangeSprite(Vector2 curInput)
-    {
-        if (Vector2.Equals(curInput, prevInput))
-            return;
         prevInput = curInput;
+    }
 
-        if (curInput == Vector2.up)
-        {
-            spriteRenderer.sprite = spriteNames[EPlayerSprite.player_idle_up];
-        }
-        else if (curInput == Vector2.down)
-        {
-            spriteRenderer.sprite = spriteNames[EPlayerSprite.player_idle_down];
-        }
-        else if (curInput == Vector2.left)
-        {
-            spriteRenderer.sprite = spriteNames[EPlayerSprite.player_idle_side];
-            spriteRenderer.flipX = true;
-        }
-        else if (curInput == Vector2.right)
-        {
-            spriteRenderer.sprite = spriteNames[EPlayerSprite.player_idle_side];
-            spriteRenderer.flipX = false;
-        }
-        else
-        {
-            Debug.LogWarning(curInput);
-            Debug.LogWarning("Inappropriate input");
-        }
+
+    private void ChangeSprite(Vector2 dir)
+    {
+        if (dir == Vector2.up)          anim.SetTrigger(anim_para_up);
+        else if (dir == Vector2.down)   anim.SetTrigger(anim_para_down);
+        else if (dir == Vector2.left)   anim.SetTrigger(anim_para_left);
+        else if (dir == Vector2.right)  anim.SetTrigger(anim_para_right);
+        else if (dir == Vector2.zero)   anim.SetTrigger(anim_para_stop);
+        else Debug.LogWarning("Inappropriate input");
     }
 
 
@@ -115,19 +74,11 @@ public class Player : MonoBehaviour
         {
             float angle = Mathf.Atan2(joystick.Vertical, joystick.Horizontal) * Mathf.Rad2Deg;
 
-            // UP
-            if (angle < 135f && angle >= 45f) return Vector2.up;
-            // DOWN
-            else if (angle < -45f && angle >= -135f) return Vector2.down;
-            // LEFT
-            else if (angle < -135f || angle >= 135f) return Vector2.left;
-            // RIGHT
-            else if (angle >= -45f && angle < 45f) return Vector2.right;
-            else
-            {
-                Debug.LogWarning($"angle : {angle}");
-                Debug.LogWarning("Inappropriate input");
-            }
+            if (angle < 135f && angle >= 45f)           return Vector2.up;
+            else if (angle < -45f && angle >= -135f)    return Vector2.down;
+            else if (angle < -135f || angle >= 135f)    return Vector2.left;
+            else if (angle >= -45f && angle < 45f)      return Vector2.right;
+            else Debug.LogWarning("Inappropriate input");
         }
         return Vector2.zero;
     }
