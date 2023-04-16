@@ -9,11 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField] private FloatingJoystick joystick;
 
     [Header("Player Data")]
-    [SerializeField] private float speed;
+    [SerializeField][Range(0, 15)] private float speed;
+    [SerializeField][Range(0, 5)] private float scanRange;
     [SerializeField][Range(0, 1)] private float joystickRangeMin; // The player moves when the stick is further than this value from the center
 
-    [Header("Input")]
+    [Header("Info")]
     private Vector2 prevInput;
+    private Vector3 curDir;
 
     [Header("Animator parameter")]
     private string anim_para_up;
@@ -41,15 +43,32 @@ public class Player : MonoBehaviour
 
         if (!Vector2.Equals(curInput, prevInput))
         {
-            ChangeSprite(curInput);
+            ChangeAnimation(curInput);
         }
+
         Move(curInput);
 
+        SetCurDir(curInput);
+
         prevInput = curInput;
+
+        // Debug
+        Debug.DrawRay(transform.position, curDir * scanRange, Color.yellow);
     }
 
 
-    private void ChangeSprite(Vector2 dir)
+    private void SetCurDir(Vector2 dir)
+    {
+        if (dir == Vector2.up)          curDir = Vector3.up;
+        else if (dir == Vector2.down)   curDir = Vector3.down;
+        else if (dir == Vector2.left)   curDir = Vector3.left;
+        else if (dir == Vector2.right)  curDir = Vector3.right;
+        else if (dir == Vector2.zero) return;
+        else Debug.LogWarning("Inappropriate input");
+    }
+
+
+    private void ChangeAnimation(Vector2 dir)
     {
         if (dir == Vector2.up)          anim.SetTrigger(anim_para_up);
         else if (dir == Vector2.down)   anim.SetTrigger(anim_para_down);
@@ -63,7 +82,7 @@ public class Player : MonoBehaviour
     private void Move(Vector2 dir)
     {
         dir = dir.normalized;
-        transform.Translate(dir * speed * Time.fixedDeltaTime);
+        rb.velocity = dir * speed;
     }
 
 
@@ -81,5 +100,21 @@ public class Player : MonoBehaviour
             else Debug.LogWarning("Inappropriate input");
         }
         return Vector2.zero;
+    }
+
+
+    public void GetFrontObject()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
+
+        if (hit.collider != null)
+        {
+            Debug.Log(hit.collider.GetComponent<Wall>().GetWallName());
+        }
+        else
+        {
+            Debug.Log("Null");
+        }
+        return;
     }
 }
