@@ -10,7 +10,7 @@ public class MenuCanvas : MonoBehaviour
     {
         startBtn.onClick.AddListener(() =>
         {
-            SceneLoader.LoadScene(EScenes.SelectLevel.ToString());
+            SceneLoader.LoadScene(EScenes.SelectName.ToString());
         });
 
         quitBtn.onClick.AddListener(() =>

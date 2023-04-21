@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,9 +8,9 @@ public class Player : MonoBehaviour
     [SerializeField] private FloatingJoystick joystick;
 
     [Header("Player Data")]
-    [SerializeField][Range(0, 15)] private float speed;
-    [SerializeField][Range(0, 5)] private float scanRange;
-    [SerializeField][Range(0, 1)] private float joystickRangeMin; // The player moves when the stick is further than this value from the center
+    private float speed;
+    private float scanRange;
+    private float joystickRangeMin; // The player moves when the stick is further than this value from the center
 
     [Header("Info")]
     private Vector2 prevInput;
@@ -29,6 +28,11 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        speed = GameData.data.speed;
+        scanRange = GameData.data.scanRange;
+        joystickRangeMin = GameData.data.joystickRangeMin;
+
         anim_para_up = "up";
         anim_para_down = "down";
         anim_para_right = "right";
@@ -41,7 +45,7 @@ public class Player : MonoBehaviour
     {
         Vector2 curInput = GetInputDir();
 
-        if (!Vector2.Equals(curInput, prevInput))
+        if (!Equals(curInput, prevInput))
         {
             ChangeAnimation(curInput);
         }

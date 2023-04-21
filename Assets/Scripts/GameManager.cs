@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 enum EScenes
 {
     Menu,
-    SelectLevel,
+    SelectName,
+    Quiz,
     EasyRoom,
 }
 
@@ -15,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);    
+        DontDestroyOnLoad(this);
     }
 
 

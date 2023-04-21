@@ -2,27 +2,28 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SelectLevelCanvas : MonoBehaviour
+public class SelectNameCanvas : MonoBehaviour
 {
     [SerializeField] private Button easyBtn;    
     [SerializeField] private Button hardBtn;
+    [SerializeField] private Button nextBtn;
     [SerializeField] private TMP_InputField nameInputField;
 
     private void Awake()
     {
-        easyBtn.onClick.AddListener(() =>
+        nextBtn.onClick.AddListener(() =>
         {
-            if(checkNameVaild())
-                SceneLoader.LoadScene(EScenes.EasyRoom.ToString());
-        });
-
-        hardBtn.onClick.AddListener(() =>
-        {
-            Debug.Log("Move to HardRoomScene");
-            /*
             if (checkNameVaild())
-                SceneLoader.LoadScene(EScenes.HardRoom.ToString());
-            */
+            {
+                GameData.data.playreName = nameInputField.text;
+                SceneLoader.LoadScene(EScenes.Quiz.ToString());
+                AndroidToast.I.ShowToastMessage("올바른 이름입니다.");
+            }
+            else
+            {
+                AndroidToast.I.ShowToastMessage("올바른 이름을 입력하세요.");
+            }
+
         });
     }
 
