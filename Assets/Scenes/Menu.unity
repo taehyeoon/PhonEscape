@@ -2733,11 +2733,14 @@ MonoBehaviour:
   distanceToWall: 1.76
   scanRange: 1.44
   joystickRangeMin: 0.5
+  selectedLevelScene: 4
   introTextList:
   - where am i?
   - hello?
   - i can't see anything
-  selectedLevelScene: 4
+  hintText: Touch to continue
+  hintFadeInterval: 1
+  textFadeInterval: 1
 --- !u!4 &580175461
 Transform:
   m_ObjectHideFlags: 0
