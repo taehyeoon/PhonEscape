@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Quiz.unity
     guid: fe5ebf471c8194c58aa2209f966c9cad
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 681245f04ab02485ca0d64da8932c886
+  - enabled: 1
     path: Assets/Scenes/easyRoom/EasyRoom.unity
     guid: 32225b52dc8504b79beb9e9be54e1a70
   m_configObjects: {}

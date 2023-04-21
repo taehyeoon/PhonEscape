@@ -10,6 +10,9 @@ public class GameData : MonoBehaviour
     [Range(0, 5)] public float scanRange;
     [Range(0, 1)] public float joystickRangeMin; // The player moves when the stick is further than this value from the center
 
+    public string[] introTextList;
+
+    public EScenes selectedLevelScene;
 
     private void Awake()
     {
@@ -18,6 +21,11 @@ public class GameData : MonoBehaviour
         if(data == null)
         {
             data = this;
+        }
+
+        if(introTextList.Length == 0)
+        {
+            Debug.LogError("The number of elements in the introTextList must be at least one");
         }
     }
 

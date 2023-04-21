@@ -2728,11 +2728,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9706ea4c0be9241b4a7aa69821f5ed6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.3
   playreName: konkuk
+  speed: 4.3
   distanceToWall: 1.76
   scanRange: 1.44
   joystickRangeMin: 0.5
+  introTextList:
+  - where am i?
+  - hello?
+  - i can't see anything
+  selectedLevelScene: 4
 --- !u!4 &580175461
 Transform:
   m_ObjectHideFlags: 0

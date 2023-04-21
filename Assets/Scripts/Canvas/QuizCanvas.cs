@@ -10,12 +10,14 @@ public class QuizCanvas : MonoBehaviour
     {
         temp_success.onClick.AddListener(() =>
         {
-            SceneLoader.LoadScene(EScenes.EasyRoom.ToString());
+            GameData.data.selectedLevelScene = EScenes.EasyRoom;
+            SceneLoader.LoadScene(EScenes.Intro.ToString());
         });
 
         temp_fail.onClick.AddListener(() =>
         {
-            AndroidToast.I.ShowToastMessage("hard mode enter", AndroidToast.ToastLength.Short);
+            GameData.data.selectedLevelScene = EScenes.HardRoom;
+            SceneLoader.LoadScene(EScenes.Intro.ToString());
         });
     }
 }

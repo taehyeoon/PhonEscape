@@ -4,8 +4,6 @@ using UnityEngine.UI;
 
 public class SelectNameCanvas : MonoBehaviour
 {
-    [SerializeField] private Button easyBtn;    
-    [SerializeField] private Button hardBtn;
     [SerializeField] private Button nextBtn;
     [SerializeField] private TMP_InputField nameInputField;
 
@@ -25,6 +23,12 @@ public class SelectNameCanvas : MonoBehaviour
             }
 
         });
+    }
+
+    private void Start()
+    {
+        nameInputField.Select();
+        nameInputField.ActivateInputField();
     }
 
     private bool checkNameVaild()
