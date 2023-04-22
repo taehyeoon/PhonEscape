@@ -1,19 +1,5 @@
 using UnityEngine;
 
-enum EWall
-{
-    North,
-    South,
-    West,
-    East,
-}
-
-enum ELevel
-{
-    Easy,
-    Hard,
-}
-
 public class Wall : MonoBehaviour
 {
     [SerializeField] private EWall orientation;

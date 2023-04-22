@@ -1,5 +1,29 @@
 using UnityEngine;
 
+public enum EScenes
+{
+    Menu,
+    SelectName,
+    Quiz,
+    Intro,
+    EasyRoom,
+    HardRoom,
+}
+
+public enum EWall
+{
+    North,
+    South,
+    West,
+    East,
+}
+
+public enum ELevel
+{
+    Easy,
+    Hard,
+}
+
 public class GameData : MonoBehaviour
 {
     public static GameData data;

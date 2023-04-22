@@ -1,15 +1,5 @@
 using UnityEngine;
 
-public enum EScenes
-{
-    Menu,
-    SelectName,
-    Quiz,
-    Intro,
-    EasyRoom,
-    HardRoom,
-}
-
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
