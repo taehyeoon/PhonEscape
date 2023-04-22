@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [Header("Player Data")]
     private float speed;
     private float scanRange;
-    private float joystickRangeMin; // The player moves when the stick is further than this value from the center
+    private float joystickRangeMin;
 
     [Header("Info")]
     private Vector2 prevInput;
@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private string anim_para_left;
     private string anim_para_stop;
 
+    [HideInInspector]
+    public EWall scannedWall;
 
     private void Awake()
     {
@@ -39,7 +41,10 @@ public class Player : MonoBehaviour
         anim_para_left = "left";
         anim_para_stop = "stop";
     }
-
+    private void Update()
+    {
+        GetFrontObject();
+    }
 
     private void FixedUpdate()
     {
@@ -115,10 +120,13 @@ public class Player : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.Log(hit.collider.GetComponent<Wall>().GetWallName());
+            scannedWall = hit.collider.GetComponent<Wall>().orientation;
+            EasyRoomCanvas.showWallBtn();
         }
         else
         {
             Debug.Log("Null");
+            EasyRoomCanvas.hideWallBtn();
         }
         return;
     }

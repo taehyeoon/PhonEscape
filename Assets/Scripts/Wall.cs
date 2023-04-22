@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    [SerializeField] private EWall orientation;
+    public EWall orientation;
     [SerializeField] private ELevel level;
     private string wallName;
 
