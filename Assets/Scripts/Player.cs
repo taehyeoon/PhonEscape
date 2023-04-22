@@ -107,6 +107,7 @@ public class Player : MonoBehaviour
     }
 
 
+    // not use
     public void GetFrontObject()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
