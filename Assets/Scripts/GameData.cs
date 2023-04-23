@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EScenes
@@ -48,6 +51,15 @@ public class GameData : MonoBehaviour
     [Tooltip("Indicates the time when the text appears")]
     [Range(0.1f, 5f)] public float textFadeInterval;
 
+    [Header("BulletinBoard")]
+    public float rowHeight;
+    public int textAreaRatio;
+    public int btnAreaRatio;
+    public List<string> messageList;
+    public List<int> likeList;
+    public List<int> dislikeList;
+    [HideInInspector] public int commentNumber;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -57,12 +69,51 @@ public class GameData : MonoBehaviour
             data = this;
         }
 
-        if(introTextList.Length == 0)
+        if (!CheckAllDataValid())
         {
-            Debug.LogError("The number of elements in the introTextList must be at least one");
+            Debug.LogError("Certain data formats are not valid");
         }
     }
 
+    private bool CheckAllDataValid()
+    {
 
+        if (introTextList.Length == 0)
+        {
+            Debug.LogError("The number of elements in the introTextList must be at least one");
+            return false;
+        }
 
+        if (rowHeight < 100f)
+        {
+            Debug.LogError("rowHeight must be at least 100");
+            return false;
+        }
+
+        if (textAreaRatio == 0 || btnAreaRatio == 0)
+        {
+            Debug.LogError("textAreaRatio and btnAreaRatio must be at least 1");
+            return false;
+        }
+
+        if (!(messageList.Count == likeList.Count && likeList.Count == dislikeList.Count))
+        {
+            Debug.LogError("[BulletinBoard] The number of messages, likes, and dislikes The numbers must all be the same.");
+            return false;
+        }
+        else
+        {
+            commentNumber = messageList.Count;
+        }
+
+        return true;
+    }
+
+    public void AddBulletinBoardRow(string message)
+    {
+        commentNumber += 1;
+        messageList.Add(message);
+        likeList.Add(0);
+        dislikeList.Add(0);
+    }
 }
