@@ -7,9 +7,11 @@ public class EasyRoomCanvas : MonoBehaviour
 {
     [SerializeField]
     private Button wallBtn;
+    [SerializeField]
+    private Button actionBtn;
     public static System.Action showWallBtn;
     public static System.Action hideWallBtn;
-
+	
     [SerializeField]
     private Player playerScript;
 

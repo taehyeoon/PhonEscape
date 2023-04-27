@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public enum EScenes
 {
@@ -31,8 +32,8 @@ public class GameData : MonoBehaviour
 {
     public static GameData data;
 
-    [Header("Player Data")]
-    public string playreName;
+    [FormerlySerializedAs("playreName")] [Header("Player Data")]
+    public string playerName;
     [Tooltip("Player speed")]
     [Range(0, 15)] public float speed;
     [Range(0, 5)] public float distanceToWall;
