@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: konkuk
-  speed: 4.3
+  speed: 5
   distanceToWall: 1.76
   scanRange: 1.44
   joystickRangeMin: 0.5
