@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class QuizCanvas : MonoBehaviour
 {
-    public Button temp_success;        
-    public Button temp_fail;
-
     private Sprite[] snsImages;
     private Sprite nonSnsImage;
 
@@ -19,18 +16,6 @@ public class QuizCanvas : MonoBehaviour
 
     private void Awake()
     {
-        temp_success.onClick.AddListener(() =>
-        {
-            GameData.data.selectedLevelScene = EScenes.EasyRoom;
-            SceneLoader.LoadScene(EScenes.Intro.ToString());
-        });
-
-        temp_fail.onClick.AddListener(() =>
-        {
-            GameData.data.selectedLevelScene = EScenes.HardRoom;
-            SceneLoader.LoadScene(EScenes.Intro.ToString());
-        });
-        
         optionBtns[0].image.sprite = Resources.Load<Sprite>($"Sprites/snsImage0");
         optionBtns[1].image.sprite = Resources.Load<Sprite>($"Sprites/snsImage1");
         optionBtns[2].image.sprite = Resources.Load<Sprite>($"Sprites/snsImage2");
