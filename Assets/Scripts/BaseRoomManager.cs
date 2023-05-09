@@ -20,6 +20,7 @@ public class BaseRoomManager : MonoBehaviour
 
     private void Awake()
     {
+        Managers.audioManager.PlayMusic("bgmClip");
         curState = room;
         room.SetActive(true);
         walls.SetActive(false);
