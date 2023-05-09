@@ -10,6 +10,7 @@ public class MenuCanvas : MonoBehaviour
     {
         startBtn.onClick.AddListener(() =>
         {
+            Managers.audioManager.PlaySfx("btnClickClip");
             SceneLoader.LoadScene(EScenes.SelectName.ToString());
         });
 
