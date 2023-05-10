@@ -63,8 +63,6 @@ public class GameData : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-
         if(data == null)
         {
             data = this;
