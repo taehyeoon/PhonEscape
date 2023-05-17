@@ -79,8 +79,8 @@ public class Player : MonoBehaviour
 
     private void ChangeAnimation(Vector2 dir)
     {
-        // if (dir == Vector2.up)          anim.SetTrigger(anim_para_up);
-        // else if (dir == Vector2.down)   anim.SetTrigger(anim_para_down);
+        if (dir == Vector2.up)          anim.SetTrigger(anim_para_left);
+        else if (dir == Vector2.down)   anim.SetTrigger(anim_para_left);
         if (dir == Vector2.left)
         {
             anim.SetTrigger(anim_para_left);
