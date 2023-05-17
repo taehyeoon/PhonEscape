@@ -9,34 +9,35 @@ public class MoniterPopup : MonoBehaviour
     public GameObject redStart;
     public GameObject redEnd;
     public LineRenderer redLine;
-    private Vector3[] redLinePosList;
     private Vector3 redMiddle;
+    public bool isRedLineDrawing;
 
     private void Awake()
     {
-        redLinePosList = new Vector3[2];
         redLine.positionCount = 0;
     }
 
     private void Update()
     {
-        Debug.Log("Taehyeon");
 #if UNITY_ANDROID
-        if (Managers.touchData.touchPhase == TouchPhase.Began &&  Managers.touchData.touchedObj == redStart && redLine.positionCount == 0)
+        if (Managers.touchData.touchPhase == TouchPhase.Began && Managers.touchData.touchedObj == redStart)
         {
-            Debug.Log("///////////redline start");
+            Debug.Log("touch redStart");
+            isRedLineDrawing = true;
             redLine.positionCount = 1;
-            redLinePosList[0] = Managers.touchData.touchPosition;
-            redLine.SetPosition(0, redLinePosList[0]);
-        }else if (Managers.touchData.touchPhase == TouchPhase.Moved && redLine.positionCount >= 1)
+            redLine.SetPosition(0, redStart.transform.position);
+            Debug.Log("Start point : " + redStart.transform.position);
+        }else if (Managers.touchData.touchPhase == TouchPhase.Moved && isRedLineDrawing)
         {
-            Debug.Log("///////////redline end");
-
+            Debug.Log("touch Moved");
             redLine.positionCount = 2;
-            redLinePosList[1] = Managers.touchData.touchPosition;
-            redLine.SetPosition(0, redLinePosList[0]);
-            redLine.SetPosition(1, redLinePosList[1]);
-            
+            var currentPos = new Vector3(Managers.touchData.touchPosition.x, Managers.touchData.touchPosition.y, -4); 
+            redLine.SetPosition(1, currentPos);
+            Debug.Log("current pos : " + currentPos);
+        }else if (Managers.touchData.touchPhase == TouchPhase.Ended)
+        {
+            isRedLineDrawing = false;
+            redLine.positionCount = 0;
         }
 #elif UNITY_EDITOR
         if (Managers.touchData.touchedObj == redStart)

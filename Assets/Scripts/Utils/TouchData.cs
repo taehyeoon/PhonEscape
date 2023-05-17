@@ -39,14 +39,15 @@ public class TouchData : MonoBehaviour
             isTouching = true;
             
             Touch touch = Input.GetTouch(0);
-            touchPosition = touch.position;
-            touchPhase = touch.phase;
             
             // 터치 위치를 스크린 좌표에서 월드 좌표로 변환
             Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
 
             // 2D 레이캐스트 생성
             RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero);
+
+            touchPosition = touchPos;
+            touchPhase = touch.phase;
 
             // 레이캐스트가 물체에 부딪힌 경우
             if (hit.collider != null)
