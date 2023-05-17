@@ -18,7 +18,7 @@ public class BaseRoomManager : MonoBehaviour
 
     private GameObject curState;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Managers.audioManager.PlayMusic("bgmClip");
         curState = room;

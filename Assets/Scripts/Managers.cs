@@ -7,6 +7,8 @@ public class Managers : MonoBehaviour
 {
     public static Managers instance;
     public static AudioManager audioManager;
+
+    public static TouchData touchData;
     private void Awake()
     {
         if (instance == null)
@@ -25,6 +27,8 @@ public class Managers : MonoBehaviour
         audioManagerObj.name = "Audio Manager";
         audioManager = audioManagerObj.AddComponent<AudioManager>();
         
+        GameObject touchDataObj = Instantiate(emptyObj, transform);
+        touchDataObj.name = "Touch Data";
+        touchData = touchDataObj.AddComponent<TouchData>();
     }
-    
 }
