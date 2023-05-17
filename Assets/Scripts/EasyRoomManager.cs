@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EasyRoomManager : BaseRoomManager
 {
@@ -12,12 +13,17 @@ public class EasyRoomManager : BaseRoomManager
     [SerializeField] private GameObject map;
 
     [SerializeField] private GameObject moniterPopup;
-    
+    [SerializeField] private Button backBtn;
     protected override void Awake()
     {
         base.Awake();
         moniterPopup.SetActive(false);
         LoadImages();
+        
+        backBtn.onClick.AddListener(() =>
+        {
+            loadRoom();
+        });
     }
 
     private void Update()
