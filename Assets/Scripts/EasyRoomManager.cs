@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class EasyRoomManager : BaseRoomManager
@@ -14,6 +15,8 @@ public class EasyRoomManager : BaseRoomManager
 
     [SerializeField] private GameObject moniterPopup;
     [SerializeField] private Button backBtn;
+
+    public Player player;
     protected override void Awake()
     {
         base.Awake();
@@ -24,6 +27,8 @@ public class EasyRoomManager : BaseRoomManager
         {
             loadRoom();
         });
+        
+        
     }
 
     private void Update()
@@ -43,6 +48,14 @@ public class EasyRoomManager : BaseRoomManager
             }
             Debug.Log(Managers.touchData.touchedObj.name);
         }
+
+        UpdateRemainingTime();
+    }
+
+    private void UpdateRemainingTime()
+    {
+        GameData.data.remainingTime -= Time.deltaTime;
+        GameData.data.remainingTime = Mathf.Max(0, GameData.data.remainingTime);
     }
 
     private void LoadImages()

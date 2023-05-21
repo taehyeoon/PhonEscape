@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public EWall scannedWall;
 
+    [Header("Light")] private Light2D spotLight;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,15 +39,36 @@ public class Player : MonoBehaviour
         scanRange = GameData.data.scanRange;
         joystickRangeMin = GameData.data.joystickRangeMin;
 
+        spotLight = transform.Find("Spot Light").GetComponent<Light2D>();
+        if(spotLight == null) Debug.LogError("Player must have Light2d object");
+
+        InitializedLight();
+        
         anim_para_up = "up";
         anim_para_down = "down";
         anim_para_right = "right";
         anim_para_left = "left";
         anim_para_stop = "stop";
     }
+
+    private void InitializedLight()
+    {
+        spotLight.pointLightOuterRadius = GameData.data.initialSpotlightRange;
+        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
+    }
+
     private void Update()
     {
         GetFrontObject();
+
+        CalculateSpotlightRange();
+    }
+
+    private void CalculateSpotlightRange()
+    {
+        float remainingTimeRatio = GameData.data.remainingTime / GameData.data.escapeTime;
+        spotLight.pointLightOuterRadius = remainingTimeRatio * (GameData.data.initialSpotlightRange - GameData.data.minSpotlightRange) + GameData.data.minSpotlightRange;
+        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
     }
 
     private void FixedUpdate()

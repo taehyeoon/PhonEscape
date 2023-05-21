@@ -1299,5 +1299,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: escapeTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: minSpotlightRange
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: initialSpotlightRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: innerOuterRadiusRatio
+      value: 0.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d104178be9dc144cc8954c1c4a145744, type: 3}

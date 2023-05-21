@@ -61,6 +61,15 @@ public class GameData : MonoBehaviour
     public List<int> dislikeList;
     [HideInInspector] public int commentNumber;
 
+    [Header("GameData")] 
+    [Tooltip("The unit is seconds")]
+    public float escapeTime;
+    public float remainingTime;
+    
+    // Light
+    public float initialSpotlightRange;
+    public float minSpotlightRange;
+    public float innerOuterRadiusRatio;
     private void Awake()
     {
         if(data == null)
@@ -72,6 +81,8 @@ public class GameData : MonoBehaviour
         {
             Debug.LogError("Certain data formats are not valid");
         }
+
+        remainingTime = escapeTime;
     }
 
     private bool CheckAllDataValid()
