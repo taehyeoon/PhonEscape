@@ -13,11 +13,6 @@ public class TouchData : MonoBehaviour
     private void Update()
     {
         GetTouchedData();
-        Debug.Log("TouchData");
-        Debug.Log("isTouching : " + isTouching);
-        Debug.Log("object : " + (touchedObj == null? "null" : touchedObj.name));
-        Debug.Log("pos : " + touchPosition);
-        Debug.Log("phase : " + touchPhase);
     }
 
     private void SetDefault()

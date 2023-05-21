@@ -25,9 +25,6 @@ public class Player : MonoBehaviour
     private string anim_para_left;
     private string anim_para_stop;
 
-    [HideInInspector]
-    public EWall scannedWall;
-
     [Header("Light")] private Light2D spotLight;
 
     private void Awake()
@@ -53,7 +50,7 @@ public class Player : MonoBehaviour
 
     private void InitializedLight()
     {
-        spotLight.pointLightOuterRadius = GameData.data.initialSpotlightRange;
+        spotLight.pointLightOuterRadius = GameData.data.maxSpotlightRange;
         spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
     }
 
@@ -66,8 +63,7 @@ public class Player : MonoBehaviour
 
     private void CalculateSpotlightRange()
     {
-        float remainingTimeRatio = GameData.data.remainingTime / GameData.data.escapeTime;
-        spotLight.pointLightOuterRadius = remainingTimeRatio * (GameData.data.initialSpotlightRange - GameData.data.minSpotlightRange) + GameData.data.minSpotlightRange;
+        spotLight.pointLightOuterRadius = GameData.data.remainingTimeRatio * (GameData.data.maxSpotlightRange - GameData.data.minSpotlightRange) + GameData.data.minSpotlightRange;
         spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
     }
 
@@ -106,7 +102,7 @@ public class Player : MonoBehaviour
     {
         if (dir == Vector2.up)          anim.SetTrigger(anim_para_left);
         else if (dir == Vector2.down)   anim.SetTrigger(anim_para_left);
-        if (dir == Vector2.left)
+        else if (dir == Vector2.left)
         {
             anim.SetTrigger(anim_para_left);
             GetComponent<SpriteRenderer>().flipX = false;
@@ -117,7 +113,11 @@ public class Player : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (dir == Vector2.zero)   anim.SetTrigger(anim_para_stop);
-        else Debug.LogWarning("Inappropriate input");
+        else
+        {
+            Debug.LogWarning("Inappropriate input : " + dir);
+            
+        }
     }
 
 
@@ -146,21 +146,22 @@ public class Player : MonoBehaviour
 
 
     // not use
-    public void GetFrontObject()
+    public GameObject GetFrontObject()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
 
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.GetComponent<Wall>().GetWallName());
-            scannedWall = hit.collider.GetComponent<Wall>().orientation;
-            EasyRoomCanvas.showWallBtn();
+            return hit.collider.gameObject;
+            // Debug.Log(hit.collider.GetComponent<Wall>().GetWallName());
+            // scannedWall = hit.collider.GetComponent<Wall>().orientation;
+            // EasyRoomCanvas.showWallBtn();
         }
         else
         {
-            Debug.Log("Null");
-            EasyRoomCanvas.hideWallBtn();
+            return null;
+            // Debug.Log("Null");
+            // EasyRoomCanvas.hideWallBtn();
         }
-        return;
     }
 }

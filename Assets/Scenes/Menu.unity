@@ -1304,6 +1304,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: maxSpotlightRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
       propertyPath: minSpotlightRange
       value: 2
       objectReference: {fileID: 0}

@@ -65,11 +65,18 @@ public class GameData : MonoBehaviour
     [Tooltip("The unit is seconds")]
     public float escapeTime;
     public float remainingTime;
+    [HideInInspector]
+    public float remainingTimeRatio; 
     
-    // Light
-    public float initialSpotlightRange;
+    [Header("Light Player")]
+    public float maxSpotlightRange;
     public float minSpotlightRange;
     public float innerOuterRadiusRatio;
+
+    [Header("Light Wall")] 
+    public float maxWallLightRange; 
+    public float minWallLightRange; 
+    
     private void Awake()
     {
         if(data == null)
@@ -83,6 +90,11 @@ public class GameData : MonoBehaviour
         }
 
         remainingTime = escapeTime;
+    }
+
+    private void Update()
+    {
+        remainingTimeRatio = remainingTime / escapeTime;
     }
 
     private bool CheckAllDataValid()

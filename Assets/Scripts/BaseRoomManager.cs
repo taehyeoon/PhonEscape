@@ -6,8 +6,6 @@ public class BaseRoomManager : MonoBehaviour
 {
     public GameObject room;
     public GameObject walls;
-    public GameObject baseWallCode;
-    public GameObject baseWallDesign;
     public GameObject north;
     public GameObject south;
     public GameObject west;
