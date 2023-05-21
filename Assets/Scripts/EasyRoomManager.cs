@@ -42,15 +42,17 @@ public class EasyRoomManager : BaseRoomManager
     {
         if (Managers.touchData.touchedObj != null)
         {
-            if (Managers.touchData.touchedObj == moniter)
+            if (Managers.touchData.touchedObj == computerBody)
             {
                 moniterPopup.SetActive(true);
+                backBtn.gameObject.SetActive(false);
             }
             else
             {
                 if (moniterPopup.activeSelf && Managers.touchData.touchedObj.name == "outside")
                 {
                     moniterPopup.SetActive(false);
+                    backBtn.gameObject.SetActive(true);
                 }   
             }
             Debug.Log(Managers.touchData.touchedObj.name);

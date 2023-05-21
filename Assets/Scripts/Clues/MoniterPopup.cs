@@ -2,54 +2,107 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
 
 public class MoniterPopup : MonoBehaviour
 {
-    public GameObject redStart;
-    public GameObject redEnd;
-    public LineRenderer redLine;
-    private Vector3 redMiddle;
-    public bool isRedLineDrawing;
+    public GameObject[] starts;
+    public GameObject[] ends;
+    public LineRenderer[] lines;
+    public bool[] isLineComplete;
+    public bool isDrawingLine;
+    public int currentLineIndex;
 
-    private void Awake()
-    {
-        redLine.positionCount = 0;
-    }
+    public GameObject clue;
 
     private void Update()
     {
-#if UNITY_ANDROID
-        if (Managers.touchData.touchPhase == TouchPhase.Began && Managers.touchData.touchedObj == redStart)
+        // No lines currently being drawn
+        if (currentLineIndex == -1)
         {
-            Debug.Log("touch redStart");
-            isRedLineDrawing = true;
-            redLine.positionCount = 1;
-            redLine.SetPosition(0, redStart.transform.position);
-            Debug.Log("Start point : " + redStart.transform.position);
-        }else if (Managers.touchData.touchPhase == TouchPhase.Moved && isRedLineDrawing)
-        {
-            Debug.Log("touch Moved");
-            redLine.positionCount = 2;
-            var currentPos = new Vector3(Managers.touchData.touchPosition.x, Managers.touchData.touchPosition.y, -4); 
-            redLine.SetPosition(1, currentPos);
-            Debug.Log("current pos : " + currentPos);
-        }else if (Managers.touchData.touchPhase == TouchPhase.Ended)
-        {
-            isRedLineDrawing = false;
-            redLine.positionCount = 0;
+            LineBegin();
         }
-#elif UNITY_EDITOR
-        if (Managers.touchData.touchedObj == redStart)
+        // There is a line that is being drawn now
+        else
         {
-            redLine.positionCount = 1;
-            redLine.SetPosition(0, Managers.touchData.touchPosition);
-        }else if (Managers.touchData.touchedObj == redEnd && redLine.positionCount == 1)
-        {
-            redLine.positionCount = 2;
-            Debug.Log("endposition : " + Managers.touchData.touchPosition);
-            redLine.SetPosition(1, Managers.touchData.touchPosition);
+            LineMove();
+            LineEnd();
         }
-#endif
+
+        if (CheckIsClear())
+        {
+            clue.SetActive(true);
+        }
+    }
+
+    private bool CheckIsClear()
+    {
+        foreach (var lineComplete in isLineComplete)
+        {
+            if (!lineComplete)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    private void LineEnd()
+    {
+        if (isLineComplete[currentLineIndex]) return;
+        
+        if (Managers.touchData.touchPhase == TouchPhase.Ended)
+        {
+            // the right destination
+            if (Managers.touchData.touchedObj == ends[currentLineIndex])
+            {
+                lines[currentLineIndex].SetPosition(1, ends[currentLineIndex].transform.position);
+                isLineComplete[currentLineIndex] = true;
+                Debug.Log("line draw end  " + currentLineIndex);
+            }
+            else
+            {
+                lines[currentLineIndex].positionCount = 0;
+            }
+
+            currentLineIndex = -1;
+            isDrawingLine = false;
+        }
+    }
+
+    private void LineMove()
+    {
+        if (Managers.touchData.touchPhase == TouchPhase.Moved && isDrawingLine)
+        {
+            var currentPos = new Vector3(Managers.touchData.touchPosition.x, Managers.touchData.touchPosition.y, -4);
+
+            lines[currentLineIndex].positionCount = 2;
+            lines[currentLineIndex].SetPosition(1, currentPos);
+            Debug.Log("move Touch");
+        }
+    }
+
+    private void LineBegin()
+    {
+        for (int i = 0; i < starts.Length; i++)
+        {
+            // Pass the line that's already drawn
+            if (isLineComplete[i])
+            {
+                Debug.Log("Begin line Complete : " + isLineComplete[i]);
+                continue;
+            }
+            
+            if (Managers.touchData.touchPhase == TouchPhase.Began && Managers.touchData.touchedObj == starts[i])
+            {
+                currentLineIndex = i;
+                isDrawingLine = true;
+                lines[i].positionCount = 1;
+                lines[i].SetPosition(0, starts[i].transform.position);
+                Debug.Log("Begin line draw : " + currentLineIndex);
+                return;
+            }
+        }
+        currentLineIndex = -1;
     }
 }
