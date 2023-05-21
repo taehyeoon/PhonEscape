@@ -39,8 +39,6 @@ public class Player : MonoBehaviour
         spotLight = transform.Find("Spot Light").GetComponent<Light2D>();
         if(spotLight == null) Debug.LogError("Player must have Light2d object");
 
-        InitializedLight();
-        
         anim_para_up = "up";
         anim_para_down = "down";
         anim_para_right = "right";
@@ -48,23 +46,11 @@ public class Player : MonoBehaviour
         anim_para_stop = "stop";
     }
 
-    private void InitializedLight()
-    {
-        spotLight.pointLightOuterRadius = GameData.data.maxSpotlightRange;
-        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
-    }
+
 
     private void Update()
     {
         GetFrontObject();
-
-        CalculateSpotlightRange();
-    }
-
-    private void CalculateSpotlightRange()
-    {
-        spotLight.pointLightOuterRadius = GameData.data.remainingTimeRatio * (GameData.data.maxSpotlightRange - GameData.data.minSpotlightRange) + GameData.data.minSpotlightRange;
-        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
     }
 
     private void FixedUpdate()

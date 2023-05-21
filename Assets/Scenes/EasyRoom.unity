@@ -2480,6 +2480,8 @@ MonoBehaviour:
   south: {fileID: 1603354894}
   west: {fileID: 534278412}
   east: {fileID: 590255039}
+  wallGlobalLight: {fileID: 1340077295}
+  roomGlobalLight: {fileID: 2015322624}
   moniter: {fileID: 1813596203}
   desk: {fileID: 542225865}
   computerBody: {fileID: 1936621269}
@@ -2487,7 +2489,7 @@ MonoBehaviour:
   moniterPopup: {fileID: 1858318848}
   backBtn: {fileID: 1825540310}
   player: {fileID: 2606688272895915548}
-  wallLight: {fileID: 1340077295}
+  spotLight: {fileID: 1523167437}
   actionBtn: {fileID: 7849861525080934575}
 --- !u!1001 &324121662720856968
 PrefabInstance:

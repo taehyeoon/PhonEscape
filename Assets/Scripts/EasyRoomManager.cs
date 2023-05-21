@@ -17,7 +17,9 @@ public class EasyRoomManager : BaseRoomManager
     [SerializeField] private Button backBtn;
 
     public Player player;
-    public Light2D wallLight;
+    
+    [Header("Light")]
+    public Light2D spotLight;
 
     public ActionBtn actionBtn;
     protected override void Awake()
@@ -26,9 +28,12 @@ public class EasyRoomManager : BaseRoomManager
         moniterPopup.SetActive(false);
         LoadImages();
 
-        wallLight.intensity = 1f;
+        wallGlobalLight.intensity = 1f;
+        InitializedLight();
         backBtn.onClick.AddListener(() =>
         {
+            roomGlobalLight.gameObject.SetActive(true);
+            wallGlobalLight.gameObject.SetActive(false);
             loadRoom();
         });
     }
@@ -54,9 +59,22 @@ public class EasyRoomManager : BaseRoomManager
         UpdateRemainingTime();
         UpdateWallLight();
         UpdateActionBtnState();
-        
+        CalculateSpotlightRange();
+
     }
 
+    private void InitializedLight()
+    {
+        spotLight.pointLightOuterRadius = GameData.data.maxSpotlightRange;
+        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
+    }
+    
+    private void CalculateSpotlightRange()
+    {
+        spotLight.pointLightOuterRadius = GameData.data.remainingTimeRatio * (GameData.data.maxSpotlightRange - GameData.data.minSpotlightRange) + GameData.data.minSpotlightRange;
+        spotLight.pointLightInnerRadius = spotLight.pointLightOuterRadius * GameData.data.innerOuterRadiusRatio;
+    }
+    
     private void UpdateActionBtnState()
     {
         GameObject frontObj = player.GetFrontObject();
@@ -79,8 +97,8 @@ public class EasyRoomManager : BaseRoomManager
 
     private void UpdateWallLight()
     {
-        wallLight.intensity = (1 - GameData.data.minWallLightRange) * GameData.data.remainingTimeRatio +
-                              GameData.data.minWallLightRange;
+        wallGlobalLight.intensity = (1 - GameData.data.minWallLightRange) * GameData.data.remainingTimeRatio +
+                                    GameData.data.minWallLightRange;
     }
 
     private void UpdateRemainingTime()
@@ -96,7 +114,5 @@ public class EasyRoomManager : BaseRoomManager
         desk.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + desk.name);
         computerBody.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath+computerBody.name);
         map.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + map.name);
-        
-        
     }
 }

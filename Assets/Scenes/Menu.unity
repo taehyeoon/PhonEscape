@@ -1308,8 +1308,16 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: maxWallLightRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
       propertyPath: minSpotlightRange
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: minWallLightRange
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
       propertyPath: initialSpotlightRange

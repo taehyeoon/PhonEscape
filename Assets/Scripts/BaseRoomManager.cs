@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class BaseRoomManager : MonoBehaviour
 {
+    [Header("Room, Walls")]
     public GameObject room;
     public GameObject walls;
     public GameObject north;
     public GameObject south;
     public GameObject west;
     public GameObject east;
+    
+    [Header("Light")]
+    public Light2D wallGlobalLight;
+    public Light2D roomGlobalLight;
     
     public static System.Action<EWall> loadWall;
     public static System.Action loadRoom;
@@ -29,7 +35,9 @@ public class BaseRoomManager : MonoBehaviour
 
         loadWall = (targetWall) =>
         {
+            roomGlobalLight.gameObject.SetActive(false);
             curState.SetActive(false);
+            
             switch (targetWall)
             {
                 case EWall.North:
@@ -50,14 +58,17 @@ public class BaseRoomManager : MonoBehaviour
             }
             walls.SetActive(true);
             curState.SetActive(true);
+            wallGlobalLight.gameObject.SetActive(true);
         };
 
         loadRoom = () =>
         {
+            wallGlobalLight.gameObject.SetActive(false);
             curState.SetActive(false);
             walls.SetActive(false);
             curState = room;
             curState.SetActive(true);
+            roomGlobalLight.gameObject.SetActive(true);
         };
     }
 }
