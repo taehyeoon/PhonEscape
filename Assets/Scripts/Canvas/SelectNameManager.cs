@@ -14,7 +14,7 @@ public class SelectNameManager : MonoBehaviour
             if (checkNameVaild())
             {
                 GameData.data.playerName = nameInputField.text;
-                SceneLoader.LoadScene(EScenes.Quiz.ToString());
+                SceneLoader.LoadScene(EScenes.Intro.ToString());
                 AndroidToast.I.ShowToastMessage("올바른 이름입니다.");
             }
             else
