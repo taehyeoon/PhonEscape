@@ -13,7 +13,6 @@ public class EasyRoomManager : BaseRoomManager
     [SerializeField] private GameObject desk;
     [SerializeField] private GameObject computerBody;
     [SerializeField] private GameObject map;
-    [SerializeField] private GameObject moniterPopup;
     [SerializeField] private Button backBtn;
 
     public Player player;
@@ -24,11 +23,10 @@ public class EasyRoomManager : BaseRoomManager
     protected override void Awake()
     {
         base.Awake();
-        moniterPopup.SetActive(false);
-        // LoadImages();
-
+        
         wallGlobalLight.intensity = 1f;
         InitializedLight();
+        
         backBtn.onClick.AddListener(() =>
         {
             roomGlobalLight.gameObject.SetActive(true);
@@ -39,30 +37,10 @@ public class EasyRoomManager : BaseRoomManager
 
     private void Update()
     {
-        // if (Managers.touchData.touchedObj != null)
-        // {
-        //     // Touch computerBody
-        //     if (Managers.touchData.touchedObj == computerBody)
-        //     {
-        //         moniterPopup.SetActive(true);
-        //         backBtn.gameObject.SetActive(false);
-        //     }
-        //     else
-        //     {
-        //         if (moniterPopup.activeSelf && Managers.touchData.touchedObj.name == "outside")
-        //         {
-        //             moniterPopup.SetActive(false);
-        //             backBtn.gameObject.SetActive(true);
-        //         }   
-        //     }
-        //     Debug.Log(Managers.touchData.touchedObj.name);
-        // }
-
         UpdateRemainingTime();
         UpdateWallLight();
         UpdateActionBtnState();
         CalculateSpotlightRange();
-
     }
 
     private void InitializedLight()
@@ -122,10 +100,5 @@ public class EasyRoomManager : BaseRoomManager
         desk.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + desk.name);
         computerBody.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath+computerBody.name);
         map.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + map.name);
-    }
-
-    public void ClickTrashBtn()
-    {
-        
     }
 }
