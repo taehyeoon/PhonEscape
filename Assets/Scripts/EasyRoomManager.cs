@@ -86,19 +86,19 @@ public class EasyRoomManager : BaseRoomManager
             Debug.Log(frontObj.layer);
             Debug.Log("Wall layer : " + LayerMask.NameToLayer("Wall"));
             if(frontObj.layer == LayerMask.NameToLayer("Wall"))
-                actionBtn.SetBtn(EBtnState.Wall, frontObj.GetComponent<Wall>().orientation);
+                actionBtn.SetBtn(EBtnState.Wall, frontObj);
             else if(frontObj.layer == LayerMask.NameToLayer("Trash"))
-                actionBtn.SetBtn(EBtnState.Trash);
+                actionBtn.SetBtn(EBtnState.Trash, frontObj);
             else if(frontObj.layer == LayerMask.NameToLayer("TrashCan"))
-                actionBtn.SetBtn(EBtnState.TrashCan);
+                actionBtn.SetBtn(EBtnState.TrashCan, frontObj);
             else
             {
-                actionBtn.SetBtn(EBtnState.A);
+                actionBtn.SetBtn(EBtnState.A, null);
             }
         }
         else
         {
-            actionBtn.SetBtn(EBtnState.A);
+            actionBtn.SetBtn(EBtnState.A, null);
 
         }
     }
@@ -122,5 +122,10 @@ public class EasyRoomManager : BaseRoomManager
         desk.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + desk.name);
         computerBody.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath+computerBody.name);
         map.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + map.name);
+    }
+
+    public void ClickTrashBtn()
+    {
+        
     }
 }

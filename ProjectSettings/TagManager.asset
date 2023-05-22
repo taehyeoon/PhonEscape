@@ -50,6 +50,9 @@ TagManager:
   - name: clue
     uniqueID: 1659313005
     locked: 0
+  - name: Number
+    uniqueID: 2213339981
+    locked: 0
   - name: popup
     uniqueID: 3527520667
     locked: 0

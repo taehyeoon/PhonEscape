@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class BaseRoomManager : MonoBehaviour
     public Light2D wallGlobalLight;
     public Light2D roomGlobalLight;
     
-    public static System.Action<EWall> loadWall;
+    public static Action<EWall> loadWall;
     public static System.Action loadRoom;
 
     private GameObject curState;

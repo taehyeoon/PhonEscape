@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
 public class MoniterPopup : MonoBehaviour
@@ -14,7 +15,8 @@ public class MoniterPopup : MonoBehaviour
     public int currentLineIndex;
 
     public GameObject clue;
-
+    public GameObject moniterLight;
+    
     private void Update()
     {
         // No lines currently being drawn
@@ -32,6 +34,7 @@ public class MoniterPopup : MonoBehaviour
         if (CheckIsClear())
         {
             clue.SetActive(true);
+            moniterLight.SetActive(true);
         }
     }
 

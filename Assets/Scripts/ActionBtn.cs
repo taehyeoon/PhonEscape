@@ -16,9 +16,12 @@ public enum EBtnState
 }
 public class ActionBtn : MonoBehaviour
 {
+    public Player player;
+    
     public EBtnState curState;
     public TMP_Text btnText;
-    public EWall scannedWall;
+    public GameObject frontObject;
+    
     private void Awake()
     {
         curState = EBtnState.A;
@@ -29,15 +32,24 @@ public class ActionBtn : MonoBehaviour
             if (curState == EBtnState.Wall)
             {
                 Debug.Log("in actionBtn");
-                EasyRoomManager.loadWall(scannedWall);
+                BaseRoomManager.loadWall(frontObject.GetComponent<Wall>().orientation);
+                return;
             }
+
+            if (curState == EBtnState.Trash)
+            {
+                frontObject.transform.SetParent(player.trashHolder.transform);
+                // frontObject.transform.position = Vector3.zero;
+                return;
+            }
+            
         });
     }
 
-    public void SetBtn(EBtnState state, EWall wall = EWall.East)
+    public void SetBtn(EBtnState state, GameObject frontObj = null)
     {
         curState = state;
-        scannedWall = wall;
+        frontObject = frontObj;
         btnText.SetText(state.ToString());
     }
 }

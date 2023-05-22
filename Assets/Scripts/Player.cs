@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
@@ -25,8 +26,13 @@ public class Player : MonoBehaviour
     private string anim_para_left;
     private string anim_para_stop;
 
-    [Header("Light")] private Light2D spotLight;
-
+    [Header("trash place holder")]
+    public Transform trashHolder;
+    public Transform left;
+    public Transform right;
+    public Transform up;
+    public Transform down;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -35,9 +41,6 @@ public class Player : MonoBehaviour
         speed = GameData.data.speed;
         scanRange = GameData.data.scanRange;
         joystickRangeMin = GameData.data.joystickRangeMin;
-
-        spotLight = transform.Find("Spot Light").GetComponent<Light2D>();
-        if(spotLight == null) Debug.LogError("Player must have Light2d object");
 
         anim_para_up = "up";
         anim_para_down = "down";
@@ -86,24 +89,40 @@ public class Player : MonoBehaviour
 
     private void ChangeAnimation(Vector2 dir)
     {
-        if (dir == Vector2.up)          anim.SetTrigger(anim_para_left);
-        else if (dir == Vector2.down)   anim.SetTrigger(anim_para_left);
+        if (dir == Vector2.up)
+        {
+            anim.SetTrigger(anim_para_left);
+            trashHolder = up;
+        }
+        else if (dir == Vector2.down)
+        {
+            anim.SetTrigger(anim_para_left);
+            trashHolder = down;
+            
+        }
         else if (dir == Vector2.left)
         {
             anim.SetTrigger(anim_para_left);
             GetComponent<SpriteRenderer>().flipX = false;
+            trashHolder = left;
+
+
         }
         else if (dir == Vector2.right)
         {
             anim.SetTrigger(anim_para_left);
             GetComponent<SpriteRenderer>().flipX = true;
+            trashHolder = right;
+
         }
         else if (dir == Vector2.zero)   anim.SetTrigger(anim_para_stop);
         else
         {
             Debug.LogWarning("Inappropriate input : " + dir);
-            
         }
+
+        trashHolder.position = Vector3.zero;
+        
     }
 
 
@@ -139,21 +158,15 @@ public class Player : MonoBehaviour
         int layer3 = 1 << LayerMask.NameToLayer("TrashCan");
 
         int layermask = layer1 | layer2 | layer3;
-        // RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
         RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, layermask);
 
         if (hit.collider != null)
         {
             return hit.collider.gameObject;
-            // Debug.Log(hit.collider.GetComponent<Wall>().GetWallName());
-            // scannedWall = hit.collider.GetComponent<Wall>().orientation;
-            // EasyRoomCanvas.showWallBtn();
         }
         else
         {
             return null;
-            // Debug.Log("Null");
-            // EasyRoomCanvas.hideWallBtn();
         }
     }
 }
