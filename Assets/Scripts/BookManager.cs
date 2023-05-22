@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class BookManager : MonoBehaviour
     public GameObject book6;
     private GameObject selectedBook = null;
     private bool flag = false;
+    private SpriteRenderer spriteRenderer;
+    public Color originalColor=Color.white;
+    public Color highlightColor=Color.yellow;
     // Update is called once per frame
     void Update()
     {
@@ -37,6 +41,8 @@ public class BookManager : MonoBehaviour
         if(selectedBook == null)
         {
             selectedBook = book;
+            spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
+            spriteRenderer.color=highlightColor;
         }
         else if (selectedBook.name != book.name)
         {
@@ -44,11 +50,15 @@ public class BookManager : MonoBehaviour
             //Debug.Log("Before Swap: selectedBook = " + selectedBook.transform.position + ", book = " + book.transform.position);
             selectedBook.transform.position = new Vector3(book.transform.position.x, selectedBook.transform.position.y, selectedBook.transform.position.z);
             book.transform.position = new Vector3(tempPos.x, book.transform.position.y, book.transform.position.z);
+            spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = originalColor;
             //Debug.Log("After Swap: selectedBook = " + selectedBook.transform.position + ", book = " + book.transform.position);
             selectedBook = null;
         }
         else
         {
+            spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
+            spriteRenderer.color = originalColor;
             selectedBook = null;
         }
 
