@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 
-public class MoniterPopup : MonoBehaviour
+public class MoniterPopup : Popup
 {
     public GameObject[] starts;
     public GameObject[] ends;
@@ -14,11 +14,16 @@ public class MoniterPopup : MonoBehaviour
     public bool isDrawingLine;
     public int currentLineIndex;
 
-    public GameObject clue;
+    public GameObject clueNumber;
     public GameObject moniterLight;
-    
-    private void Update()
+
+    private new void Awake()
     {
+        base.Awake();
+    }
+    private new void Update()
+    {
+        base.Update();
         // No lines currently being drawn
         if (currentLineIndex == -1)
         {
@@ -33,7 +38,7 @@ public class MoniterPopup : MonoBehaviour
 
         if (CheckIsClear())
         {
-            clue.SetActive(true);
+            clueNumber.SetActive(true);
             moniterLight.SetActive(true);
         }
     }

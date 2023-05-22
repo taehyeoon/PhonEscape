@@ -20,13 +20,12 @@ public class EasyRoomManager : BaseRoomManager
     
     [Header("Light")]
     public Light2D spotLight;
-
     public ActionBtn actionBtn;
     protected override void Awake()
     {
         base.Awake();
         moniterPopup.SetActive(false);
-        LoadImages();
+        // LoadImages();
 
         wallGlobalLight.intensity = 1f;
         InitializedLight();
@@ -40,23 +39,24 @@ public class EasyRoomManager : BaseRoomManager
 
     private void Update()
     {
-        if (Managers.touchData.touchedObj != null)
-        {
-            if (Managers.touchData.touchedObj == computerBody)
-            {
-                moniterPopup.SetActive(true);
-                backBtn.gameObject.SetActive(false);
-            }
-            else
-            {
-                if (moniterPopup.activeSelf && Managers.touchData.touchedObj.name == "outside")
-                {
-                    moniterPopup.SetActive(false);
-                    backBtn.gameObject.SetActive(true);
-                }   
-            }
-            Debug.Log(Managers.touchData.touchedObj.name);
-        }
+        // if (Managers.touchData.touchedObj != null)
+        // {
+        //     // Touch computerBody
+        //     if (Managers.touchData.touchedObj == computerBody)
+        //     {
+        //         moniterPopup.SetActive(true);
+        //         backBtn.gameObject.SetActive(false);
+        //     }
+        //     else
+        //     {
+        //         if (moniterPopup.activeSelf && Managers.touchData.touchedObj.name == "outside")
+        //         {
+        //             moniterPopup.SetActive(false);
+        //             backBtn.gameObject.SetActive(true);
+        //         }   
+        //     }
+        //     Debug.Log(Managers.touchData.touchedObj.name);
+        // }
 
         UpdateRemainingTime();
         UpdateWallLight();
