@@ -15,8 +15,11 @@ public class BookManager : MonoBehaviour
     private bool flag = false;
     private SpriteRenderer spriteRenderer;
     public Color originalColor=Color.white;
-    public Color highlightColor=Color.yellow;
+    public Color highlightColor=Color.black;
     // Update is called once per frame
+
+
+
     void Update()
     {
         if(Input.touchCount==1 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -43,12 +46,13 @@ public class BookManager : MonoBehaviour
             selectedBook = book;
             spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
             spriteRenderer.color=highlightColor;
+            selectedBook.transform.position = new Vector3(selectedBook.transform.position.x, selectedBook.transform.position.y+1.0f,selectedBook.transform.position.z);
         }
         else if (selectedBook.name != book.name)
         {
             Vector3 tempPos = selectedBook.transform.position;
             //Debug.Log("Before Swap: selectedBook = " + selectedBook.transform.position + ", book = " + book.transform.position);
-            selectedBook.transform.position = new Vector3(book.transform.position.x, selectedBook.transform.position.y, selectedBook.transform.position.z);
+            selectedBook.transform.position = new Vector3(book.transform.position.x, tempPos.y-1.0f, selectedBook.transform.position.z);
             book.transform.position = new Vector3(tempPos.x, book.transform.position.y, book.transform.position.z);
             spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
             spriteRenderer.color = originalColor;
@@ -56,9 +60,10 @@ public class BookManager : MonoBehaviour
             selectedBook = null;
         }
         else
-        {
+        {     
             spriteRenderer = selectedBook.GetComponent<SpriteRenderer>();
             spriteRenderer.color = originalColor;
+            selectedBook.transform.position = new Vector3(selectedBook.transform.position.x, selectedBook.transform.position.y - 1.0f, selectedBook.transform.position.z);
             selectedBook = null;
         }
 

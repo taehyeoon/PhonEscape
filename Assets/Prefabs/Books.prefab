@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 423966576188326112}
   - component: {fileID: 2032772331}
   - component: {fileID: 2032772332}
+  - component: {fileID: 2004293759}
   m_Layer: 0
   m_Name: Book6
   m_TagString: Book
@@ -100,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,6 +112,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2004293759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270947109648738398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9811321, g: 0.967469, b: 0.022214282, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1327083455765447005
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +138,7 @@ GameObject:
   - component: {fileID: 3555708245013028434}
   - component: {fileID: 995633366906613877}
   - component: {fileID: 995633366906613878}
+  - component: {fileID: 132683851340437513}
   m_Layer: 0
   m_Name: Book3
   m_TagString: Book
@@ -211,7 +228,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,6 +239,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &132683851340437513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327083455765447005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9811321, g: 0.967469, b: 0.022214282, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1385424060403830916
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +265,7 @@ GameObject:
   - component: {fileID: 4990623554797508634}
   - component: {fileID: 1075485784}
   - component: {fileID: 1075485785}
+  - component: {fileID: 570325528}
   m_Layer: 0
   m_Name: Book4
   m_TagString: Book
@@ -322,7 +355,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -333,6 +366,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &570325528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385424060403830916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9811321, g: 0.967469, b: 0.022214282, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &2293144195364631283
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +438,7 @@ MonoBehaviour:
   book5: {fileID: 1270947109648738398}
   book6: {fileID: 4359634635259891198}
   originalColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  highlightColor: {r: 0.9513017, g: 0.9716981, b: 0.03116761, a: 1}
 --- !u!1 &4359634635259891198
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +450,7 @@ GameObject:
   - component: {fileID: 7944266476853122640}
   - component: {fileID: 995633366906613875}
   - component: {fileID: 995633366906613876}
+  - component: {fileID: 2703628412456001761}
   m_Layer: 0
   m_Name: Book5
   m_TagString: Book
@@ -491,7 +540,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -502,6 +551,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2703628412456001761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4359634635259891198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9811321, g: 0.967469, b: 0.022214282, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &8199052327156475071
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +577,7 @@ GameObject:
   - component: {fileID: 7530247612594700332}
   - component: {fileID: 3862926528842199206}
   - component: {fileID: 995633366906613879}
+  - component: {fileID: 995633366906613880}
   m_Layer: 0
   m_Name: Book1
   m_TagString: Book
@@ -576,7 +641,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -613,6 +678,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75131106, y: 4.667286}
   m_EdgeRadius: 0
+--- !u!114 &995633366906613880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199052327156475071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.98039216, g: 0.9202863, b: 0.023529401, a: 1}
+  m_EffectDistance: {x: 10, y: -10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &8610549792688967177
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +704,7 @@ GameObject:
   - component: {fileID: 1802298645012208087}
   - component: {fileID: 2087373696}
   - component: {fileID: 2087373697}
+  - component: {fileID: 880918269}
   m_Layer: 0
   m_Name: Book2
   m_TagString: Book
@@ -713,7 +794,7 @@ SpriteRenderer:
   m_SortingLayerID: 1659313005
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d39cdc0232cc0054295196b69cd7b25b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a6995dc751b252b4587bcdc671159018, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -724,3 +805,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &880918269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8610549792688967177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0.9811321, g: 0.967469, b: 0.022214282, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
