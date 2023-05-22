@@ -83,16 +83,22 @@ public class EasyRoomManager : BaseRoomManager
         // If the object in front is a wall
         if (frontObj != null)
         {
-            if(frontObj.layer != LayerMask.GetMask("Wall"))
+            Debug.Log(frontObj.layer);
+            Debug.Log("Wall layer : " + LayerMask.NameToLayer("Wall"));
+            if(frontObj.layer == LayerMask.NameToLayer("Wall"))
                 actionBtn.SetBtn(EBtnState.Wall, frontObj.GetComponent<Wall>().orientation);
+            else if(frontObj.layer == LayerMask.NameToLayer("Trash"))
+                actionBtn.SetBtn(EBtnState.Trash);
+            else if(frontObj.layer == LayerMask.NameToLayer("TrashCan"))
+                actionBtn.SetBtn(EBtnState.TrashCan);
             else
             {
-                actionBtn.SetBtn(EBtnState.A, EWall.West);
+                actionBtn.SetBtn(EBtnState.A);
             }
         }
         else
         {
-            actionBtn.SetBtn(EBtnState.A, EWall.West);
+            actionBtn.SetBtn(EBtnState.A);
 
         }
     }

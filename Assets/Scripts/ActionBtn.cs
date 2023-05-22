@@ -34,7 +34,7 @@ public class ActionBtn : MonoBehaviour
         });
     }
 
-    public void SetBtn(EBtnState state, EWall wall)
+    public void SetBtn(EBtnState state, EWall wall = EWall.East)
     {
         curState = state;
         scannedWall = wall;

@@ -134,7 +134,13 @@ public class Player : MonoBehaviour
     // not use
     public GameObject GetFrontObject()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
+        int layer1 = 1 << LayerMask.NameToLayer("Wall");
+        int layer2 = 1 << LayerMask.NameToLayer("Trash");
+        int layer3 = 1 << LayerMask.NameToLayer("TrashCan");
+
+        int layermask = layer1 | layer2 | layer3;
+        // RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, LayerMask.GetMask("Wall"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, curDir, scanRange, layermask);
 
         if (hit.collider != null)
         {
