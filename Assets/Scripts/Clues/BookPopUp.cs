@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class BookPopUp : Popup
 {
-    // Start is called before the first frame update
-    void Start()
+    private new void Awake()
     {
-        
+        base.Awake();
     }
-
-    // Update is called once per frame
-    void Update()
+    private new void Update()
     {
-        
+        base.Update();
     }
 }
