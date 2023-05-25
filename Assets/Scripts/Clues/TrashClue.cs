@@ -10,6 +10,8 @@ public class TrashClue : MonoBehaviour
     public int fullnessLevel;
     private int maxFullnessLevel;
 
+    public GameObject hintLight;
+    
     public static Action PlusFullnessLevel;
     public static Action<GameObject> GetTrash;
 
@@ -24,10 +26,22 @@ public class TrashClue : MonoBehaviour
         
     }
 
+
+    private void Update()
+    {
+        if (fullnessLevel == maxFullnessLevel)
+        {
+            hintLight.SetActive(true);
+        }
+    }
+
     private void GetTrash1(GameObject trash)
     {
         trash.transform.SetParent(player.trashHolder.transform);
         trash.transform.localPosition = Vector3.zero;
+        trash.GetComponent<SpriteRenderer>().sortingLayerName = "Player";
+        trash.GetComponent<SpriteRenderer>().sortingOrder = -1;
+        
         if (trash.GetComponent<Collider2D>() != null)
         {
             Destroy(trash.GetComponent<Collider2D>());
