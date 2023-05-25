@@ -15,11 +15,12 @@ public class EasyRoomManager : BaseRoomManager
     [SerializeField] private GameObject map;
     [SerializeField] private Button backBtn;
 
-    public Player player;
-    
     [Header("Light")]
     public Light2D spotLight;
     public ActionBtn actionBtn;
+
+    public static Action dropAction;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -33,6 +34,9 @@ public class EasyRoomManager : BaseRoomManager
             wallGlobalLight.gameObject.SetActive(false);
             loadRoom();
         });
+
+        dropAction += DropTrash;
+        dropAction += FillTrashcan;
     }
 
     private void Update()
@@ -100,5 +104,18 @@ public class EasyRoomManager : BaseRoomManager
         desk.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + desk.name);
         computerBody.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath+computerBody.name);
         map.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(wireImgPath + map.name);
+    }
+    
+    // 플레이어 손 비우기
+    // 쓰레기통 채우기
+    private void DropTrash()
+    {
+        player.DropTrash();
+    }
+
+    private void FillTrashcan()
+    {
+        if(player.trashHolder.childCount > 0)
+            TrashClue.PlusFullnessLevel();
     }
 }

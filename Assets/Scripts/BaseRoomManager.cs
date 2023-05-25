@@ -23,6 +23,8 @@ public class BaseRoomManager : MonoBehaviour
 
     private GameObject curState;
 
+    public Player player;
+    
     protected virtual void Awake()
     {
         wallGlobalLight.gameObject.SetActive(false);

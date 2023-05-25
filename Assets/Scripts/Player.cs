@@ -19,19 +19,13 @@ public class Player : MonoBehaviour
     private Vector2 prevInput;
     private Vector3 curDir;
 
-    [Header("Animator parameter")]
-    private string anim_para_up;
-    private string anim_para_down;
-    private string anim_para_right;
-    private string anim_para_left;
-    private string anim_para_stop;
-
     [Header("trash place holder")]
     public Transform trashHolder;
-    public Transform left;
-    public Transform right;
-    public Transform up;
-    public Transform down;
+
+    private static readonly int Left = Animator.StringToHash("left");
+    private static readonly int Stop = Animator.StringToHash("stop");
+
+    // public Action Drop;
     
     private void Awake()
     {
@@ -41,12 +35,6 @@ public class Player : MonoBehaviour
         speed = GameData.data.speed;
         scanRange = GameData.data.scanRange;
         joystickRangeMin = GameData.data.joystickRangeMin;
-
-        anim_para_up = "up";
-        anim_para_down = "down";
-        anim_para_right = "right";
-        anim_para_left = "left";
-        anim_para_stop = "stop";
     }
 
 
@@ -91,38 +79,39 @@ public class Player : MonoBehaviour
     {
         if (dir == Vector2.up)
         {
-            anim.SetTrigger(anim_para_left);
-            trashHolder = up;
+            anim.SetTrigger(Left);
         }
         else if (dir == Vector2.down)
         {
-            anim.SetTrigger(anim_para_left);
-            trashHolder = down;
-            
+            anim.SetTrigger(Left);
         }
         else if (dir == Vector2.left)
         {
-            anim.SetTrigger(anim_para_left);
+            anim.SetTrigger(Left);
             GetComponent<SpriteRenderer>().flipX = false;
-            trashHolder = left;
-
-
+            // trashHolder = left;
+            var position = trashHolder.localPosition;
+            position = new Vector3(-Mathf.Abs(position.x), position.y, position.z);
+            trashHolder.localPosition = position;
         }
         else if (dir == Vector2.right)
         {
-            anim.SetTrigger(anim_para_left);
+            anim.SetTrigger(Left);
             GetComponent<SpriteRenderer>().flipX = true;
-            trashHolder = right;
+            var position = trashHolder.localPosition;
+            position = new Vector3(Mathf.Abs(position.x), position.y, position.z);
+            trashHolder.localPosition = position;
 
         }
-        else if (dir == Vector2.zero)   anim.SetTrigger(anim_para_stop);
+        else if (dir == Vector2.zero)
+        {
+            anim.SetTrigger(Stop);
+        }
         else
         {
             Debug.LogWarning("Inappropriate input : " + dir);
         }
 
-        trashHolder.position = Vector3.zero;
-        
     }
 
 
@@ -168,5 +157,17 @@ public class Player : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public void DropTrash()
+    {
+        if (trashHolder.childCount > 0)
+        {
+            Transform holdingTrash = trashHolder.transform.GetChild(0);
+            Destroy(holdingTrash.gameObject);
+        }
+        // // GameObject holdingTrash = trashHolder.GetComponentInChildren<GameObject>();
+        // Debug.Log(holdingTrash.name);
+        // Destroy(holdingTrash);
     }
 }

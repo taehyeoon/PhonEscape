@@ -7,7 +7,6 @@ public class Managers : MonoBehaviour
 {
     public static Managers instance;
     public static AudioManager audioManager;
-
     public static TouchData touchData;
     private void Awake()
     {

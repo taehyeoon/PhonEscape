@@ -38,9 +38,16 @@ public class ActionBtn : MonoBehaviour
 
             if (curState == EBtnState.Trash)
             {
-                frontObject.transform.SetParent(player.trashHolder.transform);
-                // frontObject.transform.position = Vector3.zero;
+                TrashClue.GetTrash(frontObject);
                 return;
+            }
+
+            if (curState == EBtnState.TrashCan)
+            {
+                if (player.trashHolder.transform.childCount < 0) return;
+                EasyRoomManager.dropAction();
+                // TrashClue.PlusFullnessLevel();
+                // player.Drop();
             }
             
         });
