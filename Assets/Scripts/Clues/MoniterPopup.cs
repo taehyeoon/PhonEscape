@@ -16,7 +16,8 @@ public class MoniterPopup : Popup
 
     public GameObject clueNumber;
     public GameObject moniterLight;
-
+    public GameObject moniterBlack;
+    
     private new void Awake()
     {
         base.Awake();
@@ -40,6 +41,7 @@ public class MoniterPopup : Popup
         {
             clueNumber.SetActive(true);
             moniterLight.SetActive(true);
+            moniterBlack.SetActive(false);
         }
     }
 

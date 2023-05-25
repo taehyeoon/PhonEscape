@@ -26,7 +26,7 @@ public class BaseRoomManager : MonoBehaviour
     protected virtual void Awake()
     {
         wallGlobalLight.gameObject.SetActive(false);
-        Managers.audioManager.PlayMusic("bgmClip");
+        // Managers.audioManager.PlayMusic("bgmClip");
         curState = room;
         room.SetActive(true);
         walls.SetActive(false);
