@@ -186,9 +186,11 @@ MonoBehaviour:
   joystickRangeMin: 0.5
   selectedLevelScene: 4
   introTextList:
-  - where am i?
-  - hello?
-  - i can't see anything
+  - "I've got a splitting headache\u2026 "
+  - 'what time is it now? '
+  - I need some medicine first.
+  - Wait, What is this creepy room?
+  - I need to get out of this room right away.
   hintText: Touch to continue
   hintFadeInterval: 1
   textFadeInterval: 1
@@ -206,3 +208,11 @@ MonoBehaviour:
   likeList: 05000000030000000d0000000100000004000000
   dislikeList: 070000000100000002000000090000000c000000
   commentNumber: 0
+  escapeTime: 90
+  remainingTime: 0
+  remainingTimeRatio: 0
+  maxSpotlightRange: 10
+  minSpotlightRange: 2
+  innerOuterRadiusRatio: 0.7
+  maxWallLightRange: 1
+  minWallLightRange: 0.4
