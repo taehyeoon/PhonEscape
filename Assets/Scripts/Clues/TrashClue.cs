@@ -15,6 +15,7 @@ public class TrashClue : MonoBehaviour
     public static Action PlusFullnessLevel;
     public static Action<GameObject> GetTrash;
 
+    public GameObject clueNumber;
     public Player player;
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class TrashClue : MonoBehaviour
         if (fullnessLevel == maxFullnessLevel)
         {
             hintLight.SetActive(true);
+            clueNumber.GetComponent<SpriteRenderer>().sortingLayerName = "Number";
         }
     }
 
