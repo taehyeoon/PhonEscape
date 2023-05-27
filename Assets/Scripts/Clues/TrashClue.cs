@@ -24,7 +24,7 @@ public class TrashClue : MonoBehaviour
         PlusFullnessLevel += PlusFullnessLevel1;
         GetTrash += GetTrash1;
         SetTrashcanSprite();
-        
+        hintLight.SetActive(false);
     }
 
 
