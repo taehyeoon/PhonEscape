@@ -20,7 +20,9 @@ public class EasyRoomManager : BaseRoomManager
     public ActionBtn actionBtn;
 
     public static Action dropAction;
-    
+
+    public DialogManager dialogManager;
+
     protected override void Awake()
     {
         base.Awake();
@@ -37,10 +39,13 @@ public class EasyRoomManager : BaseRoomManager
 
         dropAction += DropTrash;
         dropAction += FillTrashcan;
+        
+
     }
 
     private void Update()
     {
+        // dialogManager.UpdateDialog();
         UpdateRemainingTime();
         UpdateWallLight();
         UpdateActionBtnState();
@@ -67,6 +72,8 @@ public class EasyRoomManager : BaseRoomManager
         {
             Debug.Log(frontObj.layer);
             Debug.Log("Wall layer : " + LayerMask.NameToLayer("Wall"));
+            
+            // Set Action Button state
             if(frontObj.layer == LayerMask.NameToLayer("Wall"))
                 actionBtn.SetBtn(EBtnState.Wall, frontObj);
             else if(frontObj.layer == LayerMask.NameToLayer("Trash"))
@@ -74,9 +81,7 @@ public class EasyRoomManager : BaseRoomManager
             else if(frontObj.layer == LayerMask.NameToLayer("TrashCan"))
                 actionBtn.SetBtn(EBtnState.TrashCan, frontObj);
             else
-            {
                 actionBtn.SetBtn(EBtnState.A, null);
-            }
         }
         else
         {
@@ -118,4 +123,6 @@ public class EasyRoomManager : BaseRoomManager
         if(player.trashHolder.childCount > 0)
             TrashClue.PlusFullnessLevel();
     }
+
+    
 }

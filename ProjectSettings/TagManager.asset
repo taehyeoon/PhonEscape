@@ -45,9 +45,6 @@ TagManager:
   - name: Player
     uniqueID: 398528685
     locked: 0
-  - name: UI
-    uniqueID: 710356537
-    locked: 0
   - name: clue
     uniqueID: 1659313005
     locked: 0
@@ -56,4 +53,7 @@ TagManager:
     locked: 0
   - name: popup
     uniqueID: 3527520667
+    locked: 0
+  - name: UI
+    uniqueID: 710356537
     locked: 0

@@ -25,8 +25,6 @@ public class Player : MonoBehaviour
     private static readonly int Left = Animator.StringToHash("left");
     private static readonly int Stop = Animator.StringToHash("stop");
 
-    // public Action Drop;
-    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
