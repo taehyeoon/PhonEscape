@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TouchData : MonoBehaviour
 {
@@ -9,10 +10,23 @@ public class TouchData : MonoBehaviour
     public GameObject touchedObj;
     public Vector3 touchPosition;
     public TouchPhase touchPhase;
-    
+    public bool isTouchEnabled;
+
+    private void Awake()
+    {
+        isTouchEnabled = true;
+    }
+
     private void Update()
     {
-        GetTouchedData();
+        if (isTouchEnabled)
+        {
+            GetTouchedData();
+        }
+        else
+        {
+            SetDefault();
+        }
     }
 
     private void SetDefault()
@@ -20,6 +34,7 @@ public class TouchData : MonoBehaviour
         touchedObj = null;
         touchPosition = Vector3.one;
         touchPhase = TouchPhase.Canceled;
+        isTouching = false;
     }
 
     private void GetTouchedData()
@@ -56,5 +71,29 @@ public class TouchData : MonoBehaviour
                 touchedObj = null;
             }
         }
+    }
+
+    public GameObject GetTouchObject()
+    {
+        if (touchPhase == TouchPhase.Began && touchedObj != null)
+        {
+            return touchedObj;
+        }
+
+        return null;
+    }
+
+    public void DisableTouchForDuration(float disableTime)
+    {
+        SetDefault();
+        Debug.Log("[TouchData] touch is disabled && touch enable in "+disableTime + " s");
+        isTouchEnabled = false;
+        Invoke(nameof(SetTouchEnable), disableTime);
+    }
+
+    private void SetTouchEnable()
+    {
+        Debug.Log("[TouchData] touch is enable now");
+        isTouchEnabled = true;
     }
 }

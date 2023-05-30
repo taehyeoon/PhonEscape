@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DialogManager : MonoBehaviour
 {
@@ -10,11 +11,43 @@ public class DialogManager : MonoBehaviour
     public GameObject dialogPanel;
     public bool isDialogActive;
 
+    public bool isDoorDialogExecuted;
     private void Awake()
     {
         // Set Dialog invisible
         dialogPanel.SetActive(false);
         isDialogActive = false;
+    }
+
+    private void Update()
+    {
+        if (isDialogActive && Managers.touchData.isTouchEnabled)
+        {
+            if (Managers.touchData.GetTouchObject() == dialogPanel)
+            {
+                isDialogActive = false;
+                dialogPanel.SetActive(false);
+                Debug.Log("[DialogManager] dialog is close");
+            }
+        }
+        else
+        {
+            GameObject touchedObj = Managers.touchData.GetTouchObject();
+            if (touchedObj != null)
+            {
+                if (touchedObj.name == "door" && !isDoorDialogExecuted)
+                {
+                    Debug.Log("door touched");
+                    isDialogActive = true;
+                    dialogPanel.SetActive(true);
+                    dialogText.text = "The handle is rusty and the door won't open.";
+                    isDoorDialogExecuted = true;
+                    Managers.touchData.DisableTouchForDuration(2f);
+                }
+            }
+        }
+        
+
     }
 
     public void UpdateDialog()
