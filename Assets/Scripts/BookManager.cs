@@ -78,10 +78,24 @@ public class BookManager : MonoBehaviour
     }
     void BookOrder()
     {
-        if(book1.transform.position.x<book2.transform.position.x && book2.transform.position.x<book3.transform.position.x && book3.transform.position.x<book4.transform.position.x && book5.transform.position.x < book6.transform.position.x)
+        float[] bookPositions = new float[6];
+        bookPositions[0] = book1.transform.position.x;
+        bookPositions[1] = book2.transform.position.x;
+        bookPositions[2] = book3.transform.position.x;
+        bookPositions[3] = book4.transform.position.x;
+        bookPositions[4] = book5.transform.position.x;
+        bookPositions[5] = book6.transform.position.x;
+
+        for (int i = 0; i < bookPositions.Length - 1; i++)
         {
-            flag = true;
+            if (bookPositions[i] >= bookPositions[i + 1])
+            {
+                flag = false;
+                return;
+            }
         }
+
+        flag = true;
     }
 
     private void ShowQuestionMark()
