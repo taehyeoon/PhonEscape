@@ -16,9 +16,12 @@ public class BookManager : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public Color originalColor=Color.white;
     public Color highlightColor=Color.black;
-    // Update is called once per frame
 
-
+    public GameObject questionMark;
+    private void Awake()
+    {
+        questionMark.SetActive(false);
+    }
 
     void Update()
     {
@@ -28,7 +31,7 @@ public class BookManager : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(touchPos, Vector2.zero);
             if (hit.collider != null && hit.collider.CompareTag("Book"))
             {
-                // ºÎµúÈù ¹°Ã¼ Á¤º¸ Ãâ·Â
+                // ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
                 //Debug.Log("Touched object: " + hit.collider.gameObject.name);
                 selectBook(hit.collider.gameObject);
                 BookOrder();
@@ -37,6 +40,11 @@ public class BookManager : MonoBehaviour
                     Debug.Log("Order is set");
                 }
             }
+        }
+
+        if (flag)
+        {
+            ShowQuestionMark();
         }
     }
     void selectBook(GameObject book)
@@ -74,7 +82,10 @@ public class BookManager : MonoBehaviour
         {
             flag = true;
         }
+    }
 
-
+    private void ShowQuestionMark()
+    {
+        questionMark.SetActive(true);
     }
 }

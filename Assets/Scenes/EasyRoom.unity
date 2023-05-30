@@ -286,6 +286,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1962594170}
     m_Modifications:
+    - target: {fileID: 98928589, guid: 50fd91bcccc284e49a768d0f8853c489, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 98928591, guid: 50fd91bcccc284e49a768d0f8853c489, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3486041819917430018, guid: 50fd91bcccc284e49a768d0f8853c489, type: 3}
       propertyPath: m_Name
       value: BookTempPrefab
@@ -338,6 +346,10 @@ PrefabInstance:
       propertyPath: backBtn
       value: 
       objectReference: {fileID: 1825540308}
+    - target: {fileID: 7320465542670632944, guid: 50fd91bcccc284e49a768d0f8853c489, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50fd91bcccc284e49a768d0f8853c489, type: 3}
 --- !u!4 &287910151 stripped
@@ -3661,7 +3673,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1603354895
 Transform:
   m_ObjectHideFlags: 0
@@ -4707,7 +4719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1962594170
 Transform:
   m_ObjectHideFlags: 0
