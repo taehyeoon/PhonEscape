@@ -17,10 +17,16 @@ public class MoniterPopup : Popup
     public GameObject clueNumber;
     public GameObject moniterLight;
     public GameObject moniterBlack;
+
+    public DialogManager dm;
+    
+    // 힌트 완료 후 1번 실행되는 내용
+    public bool isFinalActionComplete;
     
     private new void Awake()
     {
         base.Awake();
+        isFinalActionComplete = false;
     }
     private new void Update()
     {
@@ -39,9 +45,15 @@ public class MoniterPopup : Popup
 
         if (CheckIsClear())
         {
-            clueNumber.SetActive(true);
-            moniterLight.SetActive(true);
-            moniterBlack.SetActive(false);
+            if (!isFinalActionComplete)
+            {
+                clueNumber.SetActive(true);
+                moniterLight.SetActive(true);
+                moniterBlack.SetActive(false);
+                Debug.Log("[MoniterPopup] showDialog");
+                dm.ShowDialog("he computer seems to have turned on. \nLet's check the screen.");
+                isFinalActionComplete = true;
+            }
         }
     }
 

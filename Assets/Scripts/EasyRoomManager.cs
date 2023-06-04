@@ -23,6 +23,7 @@ public class EasyRoomManager : BaseRoomManager
 
     public DialogManager dialogManager;
 
+
     protected override void Awake()
     {
         base.Awake();
@@ -45,12 +46,12 @@ public class EasyRoomManager : BaseRoomManager
 
     private void Update()
     {
-        // dialogManager.UpdateDialog();
         UpdateRemainingTime();
         UpdateWallLight();
         UpdateActionBtnState();
         CalculateSpotlightRange();
     }
+    
 
     private void InitializedLight()
     {
