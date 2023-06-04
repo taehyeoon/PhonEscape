@@ -22,6 +22,8 @@ public class Door : MonoBehaviour
     private bool isStartCoroutine;
 
     public bool isDoorOpen;
+
+    public AudioManager am;
     private void Awake()
     {
         isDoorLocked = true;
@@ -62,6 +64,7 @@ public class Door : MonoBehaviour
             else
             {
                 Debug.Log("[Door] message");
+                am.PlayDoorNotOpen();
                 easyRoomManager.dialogManager.ShowDialog("The handle is rusty and the door won't open.\n" +
                                                          "Let's find another way to break the handle");
             }

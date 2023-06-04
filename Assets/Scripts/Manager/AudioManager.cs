@@ -9,6 +9,10 @@ public class AudioManager : MonoBehaviour
     private AudioSource musicSource;
     private AudioSource playerSource;
 
+    public AudioClip doorNotOpen;
+    
+    
+    
     // [Header("SFX")]
     // private AudioClip emptyTouchClip;
     // private AudioClip btnTouchClip;
@@ -65,4 +69,6 @@ public class AudioManager : MonoBehaviour
             Debug.Log($"there is no audio clip name : {clipName}");
         }
     }
+    
+    public void PlayDoorNotOpen() => sfxSource.PlayOneShot(doorNotOpen);
 }
