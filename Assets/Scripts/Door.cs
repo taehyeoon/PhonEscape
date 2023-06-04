@@ -83,5 +83,7 @@ public class Door : MonoBehaviour
 
         doorLight.intensity = maxLightIntensity;
         Debug.Log("[Door] coroutine end");
+        
+        
     }
 }

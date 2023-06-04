@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EasyRoomManager : BaseRoomManager
@@ -25,7 +26,12 @@ public class EasyRoomManager : BaseRoomManager
 
     public String[] storyLine;
 
-    public bool hasHammer; 
+    public bool hasHammer;
+
+    public Fade fadeBlack;
+    public Fade fadeWhite;
+    
+    
     protected override void Awake()
     {
         base.Awake();
@@ -55,8 +61,15 @@ public class EasyRoomManager : BaseRoomManager
 
         if (GameData.data.remainingTime <= 0)
         {
-            SceneLoader.LoadScene(EScenes.GameOver.ToString());
+            fadeBlack.gameObject.SetActive(true);
+            fadeBlack.stopOut = false;
+            Invoke(nameof(GotoGameOver), 2); 
         }
+    }
+
+    void GotoGameOver()
+    {
+        SceneLoader.LoadScene(EScenes.GameOver.ToString());
     }
     
 
