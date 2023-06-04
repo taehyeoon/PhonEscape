@@ -138,7 +138,7 @@ public class EasyRoomManager : BaseRoomManager
     private void FillTrashcan()
     {
         if(player.trashHolder.childCount > 0)
-            TrashClue.PlusFullnessLevel();
+            TrashClue.plusFullnessLevel();
     }
 
     

@@ -21,7 +21,6 @@ public class Popup : MonoBehaviour
 
     protected void Update()
     {
-        // if (Managers.touchData.touchPhase == TouchPhase.Began &&  Managers.touchData.touchedObj.Equals(clueObject))
         if(clueObject.Equals(Managers.touchData.GetTouchObject()))
         {
             view.SetActive(true);

@@ -12,8 +12,8 @@ public class TrashClue : MonoBehaviour
     
     public GameObject hintLight;
     
-    public static Action PlusFullnessLevel;
-    public static Action<GameObject> GetTrash;
+    public static Action plusFullnessLevel;
+    public static Action<GameObject> getTrash;
 
     public GameObject clueNumber;
     public Player player;
@@ -21,8 +21,8 @@ public class TrashClue : MonoBehaviour
     {
         fullnessLevel = 0;
         maxFullnessLevel = trashCansSprites.Length;
-        PlusFullnessLevel += PlusFullnessLevel1;
-        GetTrash += GetTrash1;
+        plusFullnessLevel += PlusFullnessLevel1;
+        getTrash += GetTrash1;
         SetTrashcanSprite();
         hintLight.SetActive(false);
     }
@@ -35,7 +35,6 @@ public class TrashClue : MonoBehaviour
         {
             hintLight.SetActive(true);
             clueNumber.GetComponent<SpriteRenderer>().sortingLayerName = "Number";
-            // dm.ShowDialog("It stinks. Let's find a place to throw away trash.");
         }
         
     }

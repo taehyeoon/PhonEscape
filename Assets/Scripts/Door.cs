@@ -40,11 +40,7 @@ public class Door : MonoBehaviour
     private void Update()
     {
         if(isDoorOpen) return;
-        // if (!lockScript.isLocked)
-        // {
-        //     isDoorLocked = false;
-        //     Debug.Log("[Door] door unlock");
-        // }
+
         if (Managers.touchData.touchedObj == doorOrigin)
         {
             if(easyRoomManager.hasHammer)
