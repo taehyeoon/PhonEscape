@@ -25,8 +25,10 @@ public class Player : MonoBehaviour
     private static readonly int Left = Animator.StringToHash("left");
     private static readonly int Stop = Animator.StringToHash("stop");
 
-    public DialogManager dm;
+    // public DialogManager dm;
+    public EasyRoomManager easyRoomManager;
     public bool isTrashDialogShow;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -36,8 +38,9 @@ public class Player : MonoBehaviour
         scanRange = GameData.data.scanRange;
         joystickRangeMin = GameData.data.joystickRangeMin;
         isTrashDialogShow = false;
-    }
 
+    }
+    
 
 
     private void Update()
@@ -167,9 +170,6 @@ public class Player : MonoBehaviour
             Transform holdingTrash = trashHolder.transform.GetChild(0);
             Destroy(holdingTrash.gameObject);
         }
-        // // GameObject holdingTrash = trashHolder.GetComponentInChildren<GameObject>();
-        // Debug.Log(holdingTrash.name);
-        // Destroy(holdingTrash);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
         {
             if (!isTrashDialogShow)
             {
-                dm.ShowDialog("It stinks. \nLet's find a place to throw away trash.");
+                easyRoomManager.dialogManager.ShowDialog("It stinks. \nLet's find a place to throw away trash.");
                 isTrashDialogShow = true;
             }
         }

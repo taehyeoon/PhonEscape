@@ -1031,7 +1031,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 471719778}
-  - component: {fileID: 471719779}
   m_Layer: 0
   m_Name: Lock
   m_TagString: Untagged
@@ -1063,32 +1062,6 @@ Transform:
   m_Father: {fileID: 8780637294505188839}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &471719779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 471719777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb3d4757566dd4e78bd147c5aeae1504, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btns:
-  - {fileID: 1044017341}
-  - {fileID: 1342967257}
-  - {fileID: 1667915380}
-  - {fileID: 1298910945}
-  - {fileID: 1571188698}
-  - {fileID: 218618442}
-  - {fileID: 1344263710}
-  - {fileID: 31598568}
-  isBtnPushs: 0000000000000000
-  isLocked: 0
-  easyRoomManager: {fileID: 312505976664826852}
-  sr: {fileID: 766881119}
-  unlockSprite: {fileID: 21300000, guid: 9c88645d86c234801be0a1b35f6017ab, type: 3}
 --- !u!1 &490527661
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,7 +1077,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &490527662
 Transform:
   m_ObjectHideFlags: 0
@@ -2050,7 +2023,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &693562114
 GameObject:
   m_ObjectHideFlags: 0
@@ -4436,7 +4409,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410168091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.03, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0.77, y: -0.13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4460,7 +4433,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0
+  m_Intensity: 2.93
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000ad10c1176d1be7624de3ec839bb141d2392e572a
@@ -5360,7 +5333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   easyRoomManager: {fileID: 312505976664826852}
   isDoorLocked: 1
-  lockScript: {fileID: 471719779}
+  lockScript: {fileID: 0}
   doorOrigin: {fileID: 1416867330}
   doorBody: {fileID: 1133172863}
   doorFragment: {fileID: 48017420}
@@ -5484,7 +5457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1603354895
 Transform:
   m_ObjectHideFlags: 0
@@ -6643,7 +6616,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1962594170
 Transform:
   m_ObjectHideFlags: 0
@@ -8125,7 +8098,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 2029602064993330222}
   trashHolder: {fileID: 262946470}
-  dm: {fileID: 1544392526}
+  easyRoomManager: {fileID: 312505976664826852}
   isTrashDialogShow: 0
 --- !u!4 &2814590403318789973
 Transform:
@@ -9270,8 +9243,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8780637293563658266}
   - component: {fileID: 8780637293563658267}
+  - component: {fileID: 8780637293563658268}
   m_Layer: 0
-  m_Name: Popup
+  m_Name: Popup ToolBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9309,6 +9283,32 @@ MonoBehaviour:
   view: {fileID: 8780637294505188838}
   outSide: {fileID: 8780637293473026448}
   backBtn: {fileID: 1825540308}
+--- !u!114 &8780637293563658268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8780637293563658265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3d4757566dd4e78bd147c5aeae1504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btns:
+  - {fileID: 1044017341}
+  - {fileID: 1342967257}
+  - {fileID: 1667915380}
+  - {fileID: 1298910945}
+  - {fileID: 1571188698}
+  - {fileID: 218618442}
+  - {fileID: 1344263710}
+  - {fileID: 31598568}
+  isBtnPushs: 0000000000000000
+  isLocked: 0
+  easyRoomManager: {fileID: 312505976664826852}
+  sr: {fileID: 766881119}
+  unlockSprite: {fileID: 21300000, guid: 9c88645d86c234801be0a1b35f6017ab, type: 3}
 --- !u!1 &8780637294505188838
 GameObject:
   m_ObjectHideFlags: 0

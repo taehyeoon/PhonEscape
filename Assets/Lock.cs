@@ -14,10 +14,12 @@ public class Lock : MonoBehaviour
     public EasyRoomManager easyRoomManager;
     public SpriteRenderer sr;
     [SerializeField] private Sprite unlockSprite;
-    
+
+    public bool isDialogShow;
     private void Awake()
     {
         isLocked = true;
+        isDialogShow = false;
         for (int i = 0; i < isBtnPushs.Length; i++)
         {
             isBtnPushs[i] = false;
@@ -59,6 +61,11 @@ public class Lock : MonoBehaviour
         // check answer
         if (CheckAnswer())
         {
+            if (!isDialogShow)
+            {
+                isDialogShow = true;
+                easyRoomManager.dialogManager.ShowDialog("Get a hammer in your hand");
+            }
             isLocked = false;
             sr.sprite = unlockSprite;
             easyRoomManager.hasHammer = true;
