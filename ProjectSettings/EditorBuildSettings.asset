@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HardRoom.unity
     guid: 7148ce5ac38ec4e3389aceaf8b709ef7
+  - enabled: 1
+    path: Assets/Scenes/Timeout.unity
+    guid: 732c19c03350b5e4788504bb5e578b0e
   m_configObjects: {}
