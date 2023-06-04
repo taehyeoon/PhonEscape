@@ -12,6 +12,7 @@ public enum EScenes
     Intro,
     EasyRoom,
     HardRoom,
+    GameOver,
 }
 
 public enum EWall
