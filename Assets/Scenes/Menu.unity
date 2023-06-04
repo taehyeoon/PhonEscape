@@ -1047,6 +1047,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
       propertyPath: escapeTime
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800128568193412685, guid: d104178be9dc144cc8954c1c4a145744, type: 3}
+      propertyPath: selectedLevelScene
       value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []

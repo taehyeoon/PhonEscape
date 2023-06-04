@@ -71,7 +71,6 @@ public class EasyRoomManager : BaseRoomManager
     {
         SceneLoader.LoadScene(EScenes.GameOver.ToString());
     }
-    
 
     private void InitializedLight()
     {

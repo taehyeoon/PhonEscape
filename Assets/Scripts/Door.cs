@@ -83,7 +83,15 @@ public class Door : MonoBehaviour
 
         doorLight.intensity = maxLightIntensity;
         Debug.Log("[Door] coroutine end");
-        
-        
+        easyRoomManager.fadeWhite.gameObject.SetActive(true);
+        easyRoomManager.fadeWhite.stopOut = false;
+        Invoke(nameof(GotoOutro), 2f);
     }
+    
+    void GotoOutro()
+    {
+        SceneLoader.LoadScene(EScenes.Outro.ToString());
+    }
+
+    
 }

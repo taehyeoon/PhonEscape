@@ -10,6 +10,7 @@ public enum EScenes
     SelectName,
     Quiz,
     Intro,
+    Outro,
     EasyRoom,
     HardRoom,
     GameOver,

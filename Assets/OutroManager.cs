@@ -1,20 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class GameOverManager : MonoBehaviour
+public class OutroManager : MonoBehaviour
 {
     public Button restartBtn;
     public Button quitBtn;
-    public Fade fadeBlack;
+    public Fade fadeWhite;
+    public TMP_Text nameTag;
     
     private void Awake()
     {
-        fadeBlack.stopIn = false;
-        Invoke(nameof(OffFadeBlack), 2f);
+        nameTag.text = GameData.data.playerName;
+        fadeWhite.stopIn = false;
+        Invoke(nameof(OffFadeWhite), 2f);
         
         restartBtn.onClick.AddListener(() =>
         {
@@ -25,11 +28,10 @@ public class GameOverManager : MonoBehaviour
         {
             Application.Quit(0);
         });
-        
     }
-
-    private void OffFadeBlack()
+    
+    private void OffFadeWhite()
     {
-        fadeBlack.gameObject.SetActive(false);
+        fadeWhite.gameObject.SetActive(false);
     }
 }
