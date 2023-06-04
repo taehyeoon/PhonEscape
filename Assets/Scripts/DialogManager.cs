@@ -40,6 +40,6 @@ public class DialogManager : MonoBehaviour
         isDialogActive = true;
         dialogPanel.SetActive(true);
         dialogText.text = content;
-        Managers.touchData.DisableTouchForDuration(0.3f);
+        Managers.touchData.DisableTouchForDuration(0.1f);
     }
 }

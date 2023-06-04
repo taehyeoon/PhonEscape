@@ -28,6 +28,7 @@ public class Popup : MonoBehaviour
             backBtn.SetActive(false);
         }else if (outSide.Equals(Managers.touchData.GetTouchObject()))
         {
+            Debug.Log("[popup] outSide touch");
             view.SetActive(false);
             backBtn.SetActive(true);
         }
