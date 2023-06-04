@@ -9,8 +9,9 @@ public class Lock : MonoBehaviour
 {
     public GameObject[] btns;
     public bool[] isBtnPushs;
-    private bool isLocked;
+    public bool isLocked;
 
+    public EasyRoomManager easyRoomManager;
     public SpriteRenderer sr;
     [SerializeField] private Sprite unlockSprite;
     
@@ -27,8 +28,7 @@ public class Lock : MonoBehaviour
     {
         if (!isLocked)
         {
-            Debug.Log("[lock] change lock sprite");
-            sr.sprite = unlockSprite;
+
             return;
         }
         
@@ -60,7 +60,9 @@ public class Lock : MonoBehaviour
         if (CheckAnswer())
         {
             isLocked = false;
-            Debug.Log("is unlocked");
+            sr.sprite = unlockSprite;
+            easyRoomManager.hasHammer = true;
+            Debug.Log("[Lock] is unlocked");
         }
     }
 

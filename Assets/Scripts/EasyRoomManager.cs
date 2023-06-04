@@ -25,6 +25,7 @@ public class EasyRoomManager : BaseRoomManager
 
     public String[] storyLine;
 
+    public bool hasHammer; 
     protected override void Awake()
     {
         base.Awake();
@@ -42,6 +43,7 @@ public class EasyRoomManager : BaseRoomManager
         dropAction += DropTrash;
         dropAction += FillTrashcan;
         dialogManager.ShowDialog("You're stuck in an unidentified room.\nTake the quizzes all over this room and escape.");
+        hasHammer = false;
         // StartCoroutine(Story());
     }
 
@@ -104,9 +106,6 @@ public class EasyRoomManager : BaseRoomManager
         // If the object in front is a wall
         if (frontObj != null)
         {
-            Debug.Log(frontObj.layer);
-            Debug.Log("Wall layer : " + LayerMask.NameToLayer("Wall"));
-            
             // Set Action Button state
             if(frontObj.layer == LayerMask.NameToLayer("Wall"))
                 actionBtn.SetBtn(EBtnState.Wall, frontObj);

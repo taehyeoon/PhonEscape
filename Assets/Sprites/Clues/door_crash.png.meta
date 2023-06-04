@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b87766dd95ef743d0a069dae4d971f62
+guid: 2f75c60e11780479f972ecaa867ce217
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 3
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,7 +52,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -139,18 +139,67 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
-    outline: []
+    sprites:
+    - serializedVersion: 2
+      name: door 1_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 43
+        width: 20
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969187c03a31440cfa12cd53c22f146f
+      internalID: -1362850127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 20, y: -14}
+      - {x: 15, y: -8}
+      - {x: 8, y: -10}
+      - {x: 15, y: -3}
+      - {x: 8, y: 1}
+      - {x: 15, y: 4}
+      - {x: 14, y: 13}
+      - {x: 21, y: 6}
+      - {x: 27, y: 13}
+      - {x: 26, y: 3}
+      - {x: 32, y: 2}
+      - {x: 28, y: -5}
+      - {x: 29, y: -14}
+      - {x: 23, y: -9}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      door_1: -1134449557
+      door_10: -1557712795
+      door_3: -2052734708
+      door_5: -528949926
+      door_2: -1528857862
+      door_6: -620141157
+      door_8: 525178900
+      door_0: -1473927143
+      door_4: 554609178
+      door_11: 1920620146
+      door 1_0: -1362850127
+      door_9: 2130378363
+      door_7: 1434506256
+      door 1_1: -822552690
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
