@@ -23,6 +23,7 @@ public class EasyRoomManager : BaseRoomManager
 
     public DialogManager dialogManager;
 
+    public String[] storyLine;
 
     protected override void Awake()
     {
@@ -40,10 +41,42 @@ public class EasyRoomManager : BaseRoomManager
 
         dropAction += DropTrash;
         dropAction += FillTrashcan;
-        
-
+        dialogManager.ShowDialog("You're stuck in an unidentified room.\nTake the quizzes all over this room and escape.");
+        // StartCoroutine(Story());
     }
 
+    /*
+    IEnumerator Story()
+    {
+        int lineNum = 0;
+        Debug.Log("[EasyRoomManager] start coroutine");
+
+        while (lineNum < storyLine.Length)
+        {
+            if (!dialogManager.isDialogActive)
+            {
+                dialogManager.ShowDialog(storyLine[lineNum]);
+                yield return null;
+            }
+
+            if (Managers.touchData.touchedObj != null)
+            {
+                if (Managers.touchData.touchedObj.name == "DialogCollider")
+                {
+                    lineNum++;
+                    Debug.Log("[EasyRoomManager] next Line " + lineNum);
+
+                }
+            }
+            Debug.Log("[EasyRoomManager] coroutine");
+            yield return null;
+        }
+        Debug.Log("[EasyRoomManager] end coroutine");
+
+        
+        yield return null;
+    }
+*/
     private void Update()
     {
         UpdateRemainingTime();

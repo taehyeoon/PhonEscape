@@ -5754,6 +5754,11 @@ MonoBehaviour:
   spotLight: {fileID: 1523167437}
   actionBtn: {fileID: 7849861525080934575}
   dialogManager: {fileID: 1544392526}
+  storyLine:
+  - You're stuck in an unidentified room
+  - Take the quizzes all over this room and escape.
+  - When you run out of cell phone batteries you're using as a flash,the escape is
+    a failure.
 --- !u!1001 &324121662720856968
 PrefabInstance:
   m_ObjectHideFlags: 0
