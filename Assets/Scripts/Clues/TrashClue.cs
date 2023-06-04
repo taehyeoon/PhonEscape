@@ -9,7 +9,7 @@ public class TrashClue : MonoBehaviour
     public Sprite[] trashCansSprites;
     public int fullnessLevel;
     private int maxFullnessLevel;
-
+    
     public GameObject hintLight;
     
     public static Action PlusFullnessLevel;
@@ -30,11 +30,14 @@ public class TrashClue : MonoBehaviour
 
     private void Update()
     {
+        // if clue complete
         if (fullnessLevel == maxFullnessLevel)
         {
             hintLight.SetActive(true);
             clueNumber.GetComponent<SpriteRenderer>().sortingLayerName = "Number";
+            // dm.ShowDialog("It stinks. Let's find a place to throw away trash.");
         }
+        
     }
 
     private void GetTrash1(GameObject trash)

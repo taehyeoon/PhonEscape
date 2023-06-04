@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private static readonly int Left = Animator.StringToHash("left");
     private static readonly int Stop = Animator.StringToHash("stop");
 
+    public DialogManager dm;
+    public bool isTrashDialogShow;
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +35,7 @@ public class Player : MonoBehaviour
         speed = GameData.data.speed;
         scanRange = GameData.data.scanRange;
         joystickRangeMin = GameData.data.joystickRangeMin;
+        isTrashDialogShow = false;
     }
 
 
@@ -167,5 +170,17 @@ public class Player : MonoBehaviour
         // // GameObject holdingTrash = trashHolder.GetComponentInChildren<GameObject>();
         // Debug.Log(holdingTrash.name);
         // Destroy(holdingTrash);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "trashes")
+        {
+            if (!isTrashDialogShow)
+            {
+                dm.ShowDialog("It stinks. \nLet's find a place to throw away trash.");
+                isTrashDialogShow = true;
+            }
+        }
     }
 }
